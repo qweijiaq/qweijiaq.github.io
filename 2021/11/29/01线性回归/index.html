@@ -498,11 +498,12 @@ title: 01线性回归date: 2021-11-29 17:23
 </blockquote>
 <h4 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h4>即输入变量$x$只有$d$个特征，只与一次相关。<br>对于其中某一个输入$x_i$，有$x_i=(x_i^{(1)},x_i^{(2)},\cdots,x_i^{(d)})$<br>$$<br>f_{\theta}(x^{(1)},x^{(2)},\cdots,x^{(d)})=\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)}<br>$$<br>$$<br>令\theta^T=[\theta_0,\theta_1,\theta_2,\cdots,\theta_d],x^T=[1,x^{(1)},x^{(2)},\cdots,x^{(d)}],则 f_{\theta}(x)=\theta^Tx<br>$$<br>以上的式子是仅仅针对一个输入$x$进行分析，此时有：<br>$$<br>\dfrac{\partial f_{\theta}(x)}{\partial\theta_j}=\dfrac{\partial (\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)})}{\partial\theta_j}=x^{(j)}<br>$$</li>
 <li>梯度下降法<br>对$n$个输入使用梯度下降法求最优解的迭代公式为：<br>$$<br>\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)<br>$$<br>$$<br>\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(1)}<br>$$<br>$$<br>\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(2)}<br>$$<br>……<br>$$<br>\theta_d := \theta_d-\eta\dfrac{\partial E}{\partial \theta_d}= \theta_d-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(d)}<br>$$</li>
-<li>直接求导法<br>$$<br>令 X =<br>\begin{bmatrix}<br>1 &amp; x_{11}      &amp; x_{12}      &amp; \cdots &amp; x_{1d}      \<br>1 &amp; x_{21}      &amp; x_{22}      &amp; \cdots &amp; x_{2d}      \<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \<br>1 &amp; x_{n1}      &amp; x_{n2}      &amp; \cdots &amp; x_{nd}      \<br>\end{bmatrix},<br>\theta =<br>\begin{bmatrix}<br>\theta_0  \<br>\theta_1 \<br>\vdots \<br>\theta_d \<br>\end{bmatrix}<br>,则 y=X\theta<br>$$<br>此时目标函数为：<br>$$<br>E(\theta)=(y-X\theta)^T(y-X\theta)<br>$$<br>我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<br>$$<br>\theta^*=\arg\min_{\theta}E(\theta)<br>$$<br>目标函数对$\theta$求导：<br>$$<br>\begin{aligned}<br>\dfrac{\partial E(\theta)}{\partial\theta}<br>&amp;=\dfrac{\partial (y^T-\theta^TX^T)(y-X\theta)}{\partial\theta}\<br>&amp;=\dfrac{\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)}{\partial\theta}\<br>&amp;=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\<br>&amp;=2X^T(X\theta-y)\<br>\dfrac{\partial E(\theta)}{\partial\theta}=0 \Rightarrow \theta^*=(X^TX)^{-1}X^Ty<br>\end{aligned}<br>$$<blockquote>
-<p> $\dfrac{\partial a^Tx}{\partial x}=\dfrac{\partial x^Ta}{\partial x}=a$<br>$\dfrac{\partial x^Tax}{\partial x}=(a+a^T)x$<br>上述推导默认$X^TX$是可逆的，当$X^TX$不可逆时考虑使用正则化，不过这种情况十分少见。</p>
-</blockquote>
-</li>
+<li>直接求导法<br>$$<br>令 X =<br>\begin{bmatrix}<br>1 &amp; x_{11}      &amp; x_{12}      &amp; \cdots &amp; x_{1d}      \\<br>1 &amp; x_{21}      &amp; x_{22}      &amp; \cdots &amp; x_{2d}      \\<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>1 &amp; x_{n1}      &amp; x_{n2}      &amp; \cdots &amp; x_{nd}      \\<br>\end{bmatrix},<br>\theta =<br>\begin{bmatrix}<br>\theta_0  \\<br>\theta_1 \\<br>\vdots \\<br>\theta_d \\<br>\end{bmatrix}<br>,则 y=X\theta<br>$$<br>此时目标函数为：<br>$$<br>E(\theta)=(y-X\theta)^T(y-X\theta)<br>$$<br>我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<br>$$<br>\theta^*=\arg\min_{\theta}E(\theta)<br>$$<br>目标函数对$\theta$求导：<br>$$<br>\begin{aligned}<br>\dfrac{\partial E(\theta)}{\partial\theta}<br>&amp;=\dfrac{\partial (y^T-\theta^TX^T)(y-X\theta)}{\partial\theta}\\<br>&amp;=\dfrac{\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)}{\partial\theta}\\<br>&amp;=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\\<br>&amp;=2X^T(X\theta-y)\\<br>\dfrac{\partial E(\theta)}{\partial\theta}=0 \Rightarrow \theta^*=(X^TX)^{-1}X^Ty<br>\end{aligned}<br>$$</li>
 </ol>
+<blockquote>
+<p> $\dfrac{\partial a^Tx}{\partial x}=\dfrac{\partial x^Ta}{\partial x}=a$<br>$\dfrac{\partial x^Tax}{\partial x}=(a+a^T)x$</p>
+</blockquote>
+<p>上述推导默认$X^TX$是可逆的，当$X^TX$不可逆时考虑使用正则化，不过这种情况十分少见。</p>
 
                 
             </div>
@@ -1272,6 +1273,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

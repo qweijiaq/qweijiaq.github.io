@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 永不退场的闯关族">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="01线性回归, 永不退场的闯关族">
+    <meta name="description" content="
+有$n$组数据$(x_1,y_1),(x_2,y_2),…,(x_n,y_n)$，其中$x=(x_1,x_2,…,x_n)$为输入，$y=(y_1,y_2,…,y_n)$为对应的真实输出值。
+一元一次线性回归即输入变量$x$只有一个特征，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 永不退场的闯关族</title>
+    <title>01线性回归 | 永不退场的闯关族</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">01线性回归</h1>
                 </div>
             </div>
         </div>
@@ -428,12 +430,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">机器学习</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9B%9E%E5%BD%92/">
+                                <span class="chip bg-color">回归</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -463,15 +482,48 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <hr>
+<p>有$n$组数据$(x_1,y_1),(x_2,y_2),…,(x_n,y_n)$，其中$x=(x_1,x_2,…,x_n)$为输入，$y=(y_1,y_2,…,y_n)$为对应的真实输出值。</p>
+<h4 id="一元一次线性回归"><a href="#一元一次线性回归" class="headerlink" title="一元一次线性回归"></a>一元一次线性回归</h4><p>即输入变量$x$只有一个特征，且只与一次相关。<br>我们的目标是拟合出一条直线：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f_&#123;\theta&#125;(x)=\theta_0+\theta_1x</span><br></pre></td></tr></table></figure><br>让向量$x$中的每一个预测输出值$f_{\theta}(x_i)$尽可能的接近真实的输出值$y_i$，此时对应的目标（损失）函数为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(\theta)=\dfrac&#123;1&#125;&#123;2&#125;\sum_&#123;i=1&#125;^n(y_i-f_&#123;\theta&#125;(x_i))^2=\dfrac&#123;1&#125;&#123;2&#125;\sum_&#123;i=1&#125;^n(y_i-\theta_0-\theta_1x_i)^2</span><br></pre></td></tr></table></figure><br>从理论上讲，我们本该定义的目标函数或者说损失函数为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(\theta)=\sum_&#123;i=1&#125;^n(y_i-f_&#123;\theta&#125;(x_i))</span><br></pre></td></tr></table></figure><br>但是这是行不通的，因为假设函数在$x_i$处的误差是大于0的，而在$x_{i+1}$处的误差是小于0的，二者原本存在的误差反而正负相抵了，这显然不符合我们的期待。<br>那么可以使用绝对值吗？理论上确实是可行的，但是我们后面要对目标函数进行微分，而绝对值在某些尖点处是不可导的，故一般不使用，通常使用更加平滑的平方。至于为什么在前面加上$\dfrac{1}{2}$，当然也是为了更加便于后面的求导。<br>现在一切的问题转化为了求解使目标函数值最小的$\theta_0$和$\theta_1$（最优解），即：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\theta_0^*,\theta_1^*)=\arg \min_&#123;(\theta_0,\theta_1)&#125;E(\theta)=\arg \min_&#123;(\theta_0,\theta_1)&#125;\dfrac&#123;1&#125;&#123;2&#125;\sum_&#123;i=1&#125;^n(y_i-\theta_0-\theta_1x_i)^2</span><br></pre></td></tr></table></figure><br>如何求得最优解呢？</p>
+<ol>
+<li>直接求导<br>这里的$E(\theta)$是一个简单的凸函数，可以通过求导得到全局最优解。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\dfrac&#123;\partial E(\theta_0,\theta_1)&#125;&#123;\partial\theta_0&#125;=\sum_&#123;i=1&#125;^n(y_i-\theta_0-\theta_1x_i)(-1)=n\theta_0-\sum_&#123;i=1&#125;^n(y_i-\theta_1x_i)=0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\Rightarrow \theta_0 = \dfrac&#123;1&#125;&#123;n&#125;\sum_&#123;i=1&#125;^n(y_i-\theta_1x_i)=\bar&#123;y&#125;-\theta_1\bar&#123;x&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> $\bar{y}=\dfrac{1}{n}\sum_{i=1}^ny_i$<br> $\bar{x}=\dfrac{1}{n}\sum_{i=1}^nx_i$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\dfrac&#123;\partial E(\theta_0,\theta_1)&#125;&#123;\partial\theta_1&#125;=\sum_&#123;i=1&#125;^n(y_i-\theta_0-\theta_1x_i)(-x_i)=\theta_1\sum_&#123;i=1&#125;^n&#123;x_i&#125;^2-\sum_&#123;i=1&#125;^n(y_i-\theta_0)x_i=0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\Rightarrow \theta_1\sum_&#123;i=1&#125;^n&#123;x_i&#125;^2=\sum_&#123;i=1&#125;^n(y_i-\theta_0)x_i=\sum_&#123;i=1&#125;^n(y_i-\bar&#123;y&#125;+\theta_1\bar&#123;x&#125;)x_i</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\Rightarrow\theta_1=\dfrac&#123;\sum_&#123;i=1&#125;^ny_ix_i-\sum_&#123;i=1&#125;^n\bar&#123;y&#125;x_i&#125;&#123;\sum_&#123;i=1&#125;^nx_i^2-\sum_&#123;i=1&#125;^nx_i\bar&#123;x&#125;&#125;=\dfrac&#123;\sum_&#123;i=1&#125;^ny_ix_i-\dfrac&#123;1&#125;&#123;n&#125;\sum_&#123;i=1&#125;^ny_ix_i&#125;&#123;\sum_&#123;i=1&#125;^nx_i^2-\dfrac&#123;1&#125;&#123;n&#125;\sum_&#123;i=1&#125;^nx_i\sum_&#123;i=1&#125;^nx_i&#125;=\dfrac&#123;\sum_&#123;i=1&#125;^ny_i(x-\bar&#123;x&#125;)&#125;&#123;\sum_&#123;i=1&#125;^nx_i^2-\dfrac&#123;1&#125;&#123;n&#125;(\sum_&#123;i=1&#125;^nx_i)^2&#125;</span><br></pre></td></tr></table></figure>
+<p> 可以将$\theta_1$向量化，方便使用Python实现：<br>$\theta_1=\dfrac{\sum_{i=1}^ny_i(x_i-\bar{x})}{\sum_{i=1}^nx_i(x_i-\bar{x})}=\dfrac{\sum_{i=1}^n(y_ix_i-y_i\bar{x}-x_i\bar{y}+\bar{x}\bar{y})}{\sum_{i=1}^n(x_i^2-x_i\bar{x}-x_i\bar{x}+\bar{x}^2)}=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}$<br>这样$\theta_1$可直接由向量$x_i-\bar{x}$和$y_i-\bar{y}$表示。<br>其中$\sum_{i=1}^nx_i\bar{y}=\sum_{i=1}^n\bar{x}\bar{y}$，$\sum_{i=1}^nx_i\bar{x}=\sum_{i=1}^n(\bar{x})^2$</p>
+</blockquote>
+</li>
+<li>梯度下降法<br>不断沿着梯度的反方向迭代更新参数，直到得到最优解。<br>先随机取一组初始参数$\theta_0^{(0)},\theta_1^{(0)}$，然后通过下面的式子进行迭代更新：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_0 := \theta_0-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_0&#125;= \theta_0-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_1 := \theta_1-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_1&#125;= \theta_1-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i</span><br></pre></td></tr></table></figure>
+<h4 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h4>即输入变量$x$只有一个特征，但与$x$的$n(n&gt;1)$次相关。<br>有些数据无法用简单的一次线性函数拟合，必须使用一元高次曲线函数来拟合。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f_&#123;\theta&#125;(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3+\cdots+\theta_nx^n</span><br></pre></td></tr></table></figure>
+使用梯度下降法求最优解的迭代公式为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_0 := \theta_0-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_0&#125;= \theta_0-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_1 := \theta_1-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_1&#125;= \theta_1-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_2 := \theta_2-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_2&#125;= \theta_2-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i^2</span><br></pre></td></tr></table></figure>
+……<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_n := \theta_n-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_n&#125;= \theta_n-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i^n</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> 多项式回归由于模型较为复杂，所以容易出现过拟合现象。</p>
+<h4 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h4><p>即输入变量$x$只有$d$个特征，只与一次相关。<br>对于其中某一个输入$x_i$，有$x_i=(x_i^{(1)},x_i^{(2)},\cdots,x_i^{(d)})$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f_&#123;\theta&#125;(x^&#123;(1)&#125;,x^&#123;(2)&#125;,\cdots,x^&#123;(d)&#125;)=\theta_0+\theta_1x^&#123;(1)&#125;+\theta_2x^&#123;(2)&#125;+\cdots+\theta_dx^&#123;(d)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">令\theta^T=[\theta_0,\theta_1,\theta_2,\cdots,\theta_d],x^T=[1,x^&#123;(1)&#125;,x^&#123;(2)&#125;,\cdots,x^&#123;(d)&#125;],则 f_&#123;\theta&#125;(x)=\theta^Tx</span><br></pre></td></tr></table></figure>
+<p>以上的式子是仅仅针对一个输入$x$进行分析，此时有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\dfrac&#123;\partial f_&#123;\theta&#125;(x)&#125;&#123;\partial\theta_j&#125;=\dfrac&#123;\partial (\theta_0+\theta_1x^&#123;(1)&#125;+\theta_2x^&#123;(2)&#125;+\cdots+\theta_dx^&#123;(d)&#125;)&#125;&#123;\partial\theta_j&#125;=x^&#123;(j)&#125;</span><br></pre></td></tr></table></figure></blockquote>
+</li>
+<li>梯度下降法<br>对$n$个输入使用梯度下降法求最优解的迭代公式为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_0 := \theta_0-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_0&#125;= \theta_0-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_1 := \theta_1-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_1&#125;= \theta_1-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i^&#123;(1)&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_2 := \theta_2-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_2&#125;= \theta_2-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i^&#123;(2)&#125;</span><br></pre></td></tr></table></figure>
+……<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta_d := \theta_d-\eta\dfrac&#123;\partial E&#125;&#123;\partial \theta_d&#125;= \theta_d-\eta\sum_&#123;i=1&#125;^n(f_&#123;\theta&#125;(x_i)-y_i)x_i^&#123;(d)&#125;</span><br></pre></td></tr></table></figure></li>
+<li>直接求导法<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">令 X = \left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"> 1 &amp; x_&#123;11&#125;      &amp; x_&#123;12&#125;      &amp; \cdots &amp; x_&#123;1d&#125;      \\</span><br><span class="line"> 1 &amp; x_&#123;21&#125;      &amp; x_&#123;22&#125;      &amp; \cdots &amp; x_&#123;2d&#125;      \\</span><br><span class="line"> \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\</span><br><span class="line"> 1 &amp; x_&#123;n1&#125;      &amp; x_&#123;n2&#125;      &amp; \cdots &amp; x_&#123;nd&#125;      \\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right],</span><br><span class="line">\theta = \left[</span><br><span class="line">\begin&#123;matrix&#125;</span><br><span class="line"> \theta_0  \\</span><br><span class="line"> \theta_1 \\</span><br><span class="line"> \vdots \\</span><br><span class="line"> \theta_d \\</span><br><span class="line">\end&#123;matrix&#125;</span><br><span class="line">\right],则 y=X\theta                                                                      </span><br></pre></td></tr></table></figure>
+此时目标函数为：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E(\theta)=(y-X\theta)^T(y-X\theta)</span><br></pre></td></tr></table></figure>
+我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\theta^*=\arg\min_&#123;\theta&#125;E(\theta)</span><br></pre></td></tr></table></figure>
+目标函数对$\theta$求导：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;equation&#125;</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">\dfrac&#123;\partial E(\theta)&#125;&#123;\partial\theta&#125;</span><br><span class="line">&amp;=\dfrac&#123;\partial (y^T-\theta^TX^T)(y-X\theta)&#125;&#123;\partial\theta&#125;\\</span><br><span class="line">&amp;=\dfrac&#123;\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)&#125;&#123;\partial\theta&#125;\\</span><br><span class="line">&amp;=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\\</span><br><span class="line">&amp;=2X^T(X\theta-y)\\</span><br><span class="line">\dfrac&#123;\partial E(\theta)&#125;&#123;\partial\theta&#125;=0 \Rightarrow \theta^*=(X^TX)^&#123;-1&#125;X^Ty</span><br><span class="line">\end&#123;aligned&#125;</span><br><span class="line">\end&#123;equation&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> $\dfrac{\partial a^Tx}{\partial x}=\dfrac{\partial x^Ta}{\partial x}=a$<br>$\dfrac{\partial x^Tax}{\partial x}=(a+a^T)x$<br>上述推导默认$X^TX$是可逆的，当$X^TX$不可逆时考虑使用正则化，不过这种情况十分少见。</p>
+</blockquote>
+</li>
+</ol>
 
                 
             </div>
@@ -488,7 +540,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">卫佳 CQUer</a>
+                    <a href="/about" rel="external nofollow noreferrer">Wei Jia</a>
                 </span>
             </div>
             <div class="reprint__type">
@@ -498,7 +550,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/11/29/hello-world/">http://example.com/2021/11/29/hello-world/</a>
+                    <a href="http://example.com/2021/11/29/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">http://example.com/2021/11/29/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -511,7 +563,7 @@
                     All articles in this blog are used except for special statements
                     <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
                     reprint policy. If reproduced, please indicate source
-                    <a href="/about" target="_blank">卫佳 CQUer</a>
+                    <a href="/about" target="_blank">Wei Jia</a>
                     !
                 </span>
             </div>
@@ -535,7 +587,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">机器学习</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9B%9E%E5%BD%92/">
+                                    <span class="chip bg-color">回归</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -705,18 +765,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/11/29/hello-world/">
+                <a href="/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="01线性回归">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">01线性回归</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -726,18 +785,33 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            卫佳 CQUer
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%9E%E5%BD%92/">
+                        <span class="chip bg-color">回归</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -745,10 +819,10 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+                <a href="/2021/11/29/%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
                     <div class="card-image">
                         
                         
@@ -779,6 +853,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -918,6 +993,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
 
 
 

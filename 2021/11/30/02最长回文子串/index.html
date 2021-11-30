@@ -10,7 +10,7 @@
   回文串定义为：aba，abba这样的正反都一样的字符串。
   子串和子序列的区别：
 
-子串是连续字符（如ab是abcd的子串），一">
+  子串是连续字符（如ab是abcd的子串）">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -35,9 +35,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
 
 
 
@@ -495,18 +495,19 @@
 <p>  回文串定义为：aba，abba这样的正反都一样的字符串。</p>
 <p>  子串和子序列的区别：</p>
 <ul>
-<li>子串是连续字符（如ab是abcd的子串），一个有$n$个字符的字符串的子串数量级为$O(n^2)$。</li>
-<li>子序列可以是非连续字符（如ab、ac都是abcd的子序列），一个有$n$个字符的字符串的子串数量级为$O(2^n)$。</li>
+<li>  子串是连续字符（如ab是abcd的子串），一个有$n$个字符的字符串的子串数量级为$O(n^2)$。</li>
+<li>  子序列可以是非连续字符（如ab、ac都是abcd的子序列），一个有$n$个字符的字符串的子串数量级为$O(2^n)$。</li>
 </ul>
 </blockquote>
 <ol>
-<li>双指针算法</li>
+<li>  双指针算法</li>
 </ol>
 <p>双指针算法分为相向型、同向型和背向型三种，求回文子串使用相向型双指针。</p>
 <p>伪代码：</p>
 <pre class="line-numbers language-none"><code class="language-none">for 起点              				O(n)
 	for 终点	  					    O(n)
 		检测中间的子串是不是一个回文串    O(n)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>这种算法的时间复杂度为$O(n^3)$，显然不太合适。</p>
 <p>寻找下面实现代码的错误：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
@@ -524,11 +525,12 @@
                 if l&gt;=r:
                     return s[i:i+length]
 		return ""<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ul>
-<li>没有异常检测</li>
-<li>使用大量单字母的变量命名，意义不明</li>
-<li>空格使用不规范</li>
-<li>缩进层数过多</li>
+<li>  没有异常检测</li>
+<li>  使用大量单字母的变量命名，意义不明</li>
+<li>  空格使用不规范</li>
+<li>  缩进层数过多</li>
 </ul>
 <p>改进后的实现代码：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
@@ -553,12 +555,15 @@
             right -= 1
         
         return left &gt;= right<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>Manacher’s Algorithm</li>
+
+
+
+<ol start="2">
+<li>  Manacher’s Algorithm</li>
 </ol>
 <p>该算法可以在$O(n)$的时间内求的最长回文子串，$n$为字符串长度，是该问题的最优算法，但绝对不是面试官想让实现的算法，因为它会认为你是靠背诵得来的。</p>
-<ol>
-<li>基于中心线枚举的算法</li>
+<ol start="3">
+<li>  基于中心线枚举的算法</li>
 </ol>
 <p>这种算法也是基于双指针的，不过是基于背向型双指针。</p>
 <p>当要使得子串为奇数时，中心线有$n$种情况，即字符串的每个字符处；当要使得子串为偶数时，中心线有$n-1$种情况，即字符串的每两个相邻字符的间隔处。</p>
@@ -593,6 +598,7 @@
                 start = left + 1
                 
         return s[start: start + longest]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>上述代码存在一个问题，就是<code>odd</code>和<code>even</code>代码的部分存在大量重复，这在工程开发中是不允许的，面试时也容易给面试官留下不好的印象，故需要优化，优化后代码如下：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
     """
@@ -615,8 +621,9 @@
             left -= 1
             right += 1
         return right - left -1, left + 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ol>
-<li>基于动态规划的算法</li>
+
+<ol start="4">
+<li>  基于动态规划的算法</li>
 </ol>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
     """
@@ -644,28 +651,29 @@
                     start = i
                     
         return s[start: start + longest]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h6 id="面试评价标准"><a href="#面试评价标准" class="headerlink" title="面试评价标准"></a>面试评价标准</h6><p>从最长回文子串中我们可以得到的面试考点：</p>
 <ul>
 <li><p>面试不一定会要求你用最优复杂度的算法来解决问题 </p>
 <ul>
-<li>因此单纯只刷LC之类的OJ，容易让你产生一定要用最优解来解决这样的误区 </li>
+<li>  因此单纯只刷LC之类的OJ，容易让你产生一定要用最优解来解决这样的误区 </li>
 </ul>
 </li>
 <li><p>代码真的不是写出来就可以过 </p>
 <ul>
-<li><p>代码质量(Coding Quality)很重要</p>
+<li><p>  代码质量(Coding Quality)很重要</p>
 </li>
 <li><p>好的代码质量包括： </p>
 <ul>
-<li><p>Bug Free </p>
+<li><p>  Bug Free </p>
 </li>
-<li><p>好的代码风格(Coding Style)，包括变量名命名规范有意义，合理的使用空格，善用空行 </p>
+<li><p>  好的代码风格(Coding Style)，包括变量名命名规范有意义，合理的使用空格，善用空行 </p>
 </li>
-<li><p>容易让人读懂的逻辑。要把复杂的事情用简单的方式，别把简单的事情写复杂了</p>
+<li><p>  容易让人读懂的逻辑。要把复杂的事情用简单的方式，别把简单的事情写复杂了</p>
 </li>
-<li><p>没有冗余代码 </p>
+<li><p>  没有冗余代码 </p>
 </li>
-<li><p>有边界检测和异常处理 </p>
+<li><p>  有边界检测和异常处理 </p>
 </li>
 </ul>
 </li>
@@ -673,37 +681,37 @@
 </li>
 </ul>
 <p>Longest Palindromic Substring的全部算法及时间复杂度：</p>
-<p><img src="/Users/woniu/Desktop/Myblog/website/source/images/image-20211130225747299.png" alt="image-20211130225747299"></p>
+<p><img src="/../images/image-20211130225747299.png"></p>
 <blockquote>
 <p>   参考代码：<a target="_blank" rel="noopener" href="http://www.jiuzhang.com/solution/longest-palindromic-substring/">最大回文子串代码实现</a></p>
 </blockquote>
 <p>从 Longest Palindromic Substring 看面试的评分体系：</p>
-<p><img src="/Users/woniu/Desktop/Myblog/website/source/images/image-20211130225940906.png" alt="image-20211130225940906"></p>
+<p><img src="/../images/image-20211130225940906.png"></p>
 <p>面试评分和 Offer 的关系：</p>
-<p><img src="/Users/woniu/Desktop/Myblog/website/source/images/image-20211130225958763.png" alt="image-20211130225958763"></p>
+<p><img src="/../images/image-20211130225958763.png"></p>
 <h6 id="快速提高代码质量的十二个技巧"><a href="#快速提高代码质量的十二个技巧" class="headerlink" title="快速提高代码质量的十二个技巧"></a>快速提高代码质量的十二个技巧</h6><ul>
 <li><p>Coding Style相关: </p>
 <ul>
-<li>二元运算符两边加空格，单元运算符不加空格</li>
-<li>花括号和<code>for</code>,<code>if</code>之间要加空格(Java)，圆括号和<code>if</code>之间要加空格</li>
-<li>用空行分隔开不同的逻辑块</li>
-<li>逗号后面加空格 </li>
+<li>  二元运算符两边加空格，单元运算符不加空格</li>
+<li>  花括号和<code>for</code>,<code>if</code>之间要加空格(Java)，圆括号和<code>if</code>之间要加空格</li>
+<li>  用空行分隔开不同的逻辑块</li>
+<li>  逗号后面加空格 </li>
 </ul>
 </li>
 <li><p>Readability相关 </p>
 <ul>
-<li>函数名和变量名用1-2个单词作为名称</li>
-<li>确保一个函数内部不超过3层缩进(indention) </li>
-<li>多用子函数来减少入口函数的代码量 </li>
-<li>多用<code>continue</code>少用<code>if</code> </li>
+<li>  函数名和变量名用1-2个单词作为名称</li>
+<li>  确保一个函数内部不超过3层缩进(indention) </li>
+<li>  多用子函数来减少入口函数的代码量 </li>
+<li>  多用<code>continue</code>少用<code>if</code> </li>
 </ul>
 </li>
 <li><p>Bug Free相关 </p>
 <ul>
-<li>不管有没有可能出问题，都要对入口函数的参数进行异常检测 </li>
-<li>访问一个下标的时候，一定要确保这个下标不会越界</li>
-<li>访问一个对象的属性或者方法时，一定要确保这个对象不是空</li>
-<li>不用全局变量</li>
+<li>  不管有没有可能出问题，都要对入口函数的参数进行异常检测 </li>
+<li>  访问一个下标的时候，一定要确保这个下标不会越界</li>
+<li>  访问一个对象的属性或者方法时，一定要确保这个对象不是空</li>
+<li>  不用全局变量</li>
 </ul>
 </li>
 </ul>
@@ -716,6 +724,7 @@
 		做一些处理
 		做一些处理
 		做一些处理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>通过使用<code>continue</code>减少缩进：</p>
 <pre class="line-numbers language-none"><code class="language-none">for ... :
 	if not 条件:
@@ -726,6 +735,7 @@
 	做一些处理
 	做一些处理
 	做一些处理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <pre class="line-numbers language-none"><code class="language-none">for ... :
 	if 条件1:
 		做一些处理
@@ -735,6 +745,7 @@
 			做一些处理
 			做一些处理
 			做一些处理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>通过使用<code>continue</code>减少缩进：</p>
 <pre class="line-numbers language-none"><code class="language-none">for ... :
 	if !条件1:
@@ -747,6 +758,9 @@
 	做一些处理
 	做一些处理
 	做一些处理<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>

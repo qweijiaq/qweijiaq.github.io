@@ -4,8 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 永不退场的闯关族">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="永不退场的闯关族">
+    <meta name="description" content="面试官眼中的求职者HR主要通过你的衣着、谈吐和外貌来看你；技术面试官则是通过你的代码来看你。
+写代码不超过3个月
+为什么面试官会认为上述代码是由代码基础不足三个月的人写出的？
+
+  变量含义不明。好的代码要求每一个（至少重要的）变量和函数含">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +21,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | 永不退场的闯关族</title>
+    <title>永不退场的闯关族</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +313,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -442,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-29
+                    2021-11-30
                 </div>
                 
 
@@ -463,19 +467,221 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+                <h4 id="面试官眼中的求职者"><a href="#面试官眼中的求职者" class="headerlink" title="面试官眼中的求职者"></a>面试官眼中的求职者</h4><p>HR主要通过你的衣着、谈吐和外貌来看你；技术面试官则是通过你的代码来看你。</p>
+<h6 id="写代码不超过3个月"><a href="#写代码不超过3个月" class="headerlink" title="写代码不超过3个月"></a>写代码不超过3个月</h6><p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130121847511.png" alt="image-20211130121847511"></p>
+<p>为什么面试官会认为上述代码是由代码基础不足三个月的人写出的？</p>
+<ol>
+<li>  变量含义不明。好的代码要求每一个（至少重要的）变量和函数含义明了，最好直接能通过命名来得知它的功能。</li>
+<li>  嵌套过多。嵌套越多也就意味着代码出错的可能性越大，可读性也越差，一般代码的嵌套最好不要超过三层，如果实在需要更多层的嵌套，可以将其封装在一个函数里。</li>
+</ol>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130122602831.png" alt="image-20211130122602831"></p>
+<h6 id="代码从没被人review过"><a href="#代码从没被人review过" class="headerlink" title="代码从没被人review过"></a>代码从没被人review过</h6><p>如何在公司获得提升？</p>
+<p>很多人认为在公司里面多做项目就可以获得巨大的提升，这只是一个半对的答案。事实上，当我们的代码被前辈（更高级别的程序员）review，并给你feedback一些建议，我们根据这些反馈做出积极的改变时，往往能够得到最大的提升。与学习编程时不同，工程中的编程更加考验我们的工程思维，一段好懂的代码往往比一段简短的代码重要的多。当我们写的代码从来没有被review时，我们往往只在意我们所写的代码是否正确，而去忽视了它是否好理解，是否能够更加的优化。这时，前辈的某些建议可能是醍醐灌顶的，他可能帮你解决了你一辈子不能解决甚至不会发现的问题，这种时候带来的提升很可能是质变的。</p>
+<p>就拿上图来说，<code>grid[i][j] = 1 or 2</code>的写法没有语法错误，运行起来也正常，但是如果加上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GridType</span>:</span></span><br><span class="line">    PEOPLE = <span class="number">0</span></span><br><span class="line">    ZOMBIE = <span class="number">1</span></span><br><span class="line">    WALL = <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>然后将代码改为<code>grid[i][j] = GridType.ZOMBIE or GridType.WALL</code>，虽然增加了几行代码，但会极大增加可读性，让面试官觉得你是一个具有工程思维的人。</p>
+<h6 id="写代码经验太少"><a href="#写代码经验太少" class="headerlink" title="写代码经验太少"></a>写代码经验太少</h6><p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130134111434.png" alt="image-20211130134111434"></p>
+<p>写代码经验太少也是一个需要解决的问题，这需要平时不断的实战、不断的思考、不断的debug。如上图就是一段有问题的代码。它使用到了<code>or</code>这一逻辑运算符，我们知道<code>and</code>和<code>or</code>都是遵循<strong>短路原则</strong>的，对于这里面的<code>or</code>来说，如果前面的<code>i &lt; len(list)</code>成立，就直接默认这个条件判断是<code>True</code>的，不会去判断后面的条件<code>j &lt; len(list2)</code>是否成立，从而可能导致程序出现bug。</p>
+<h6 id="缺乏项目经验"><a href="#缺乏项目经验" class="headerlink" title="缺乏项目经验"></a>缺乏项目经验</h6><ul>
+<li>代码耦合度太高，逻辑交杂在一起<ul>
+<li>  难维护</li>
+<li>  难读懂</li>
+<li>  易出错</li>
+</ul>
+</li>
+</ul>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130135000419.png" alt="image-20211130135000419"></p>
+<p>解决办法：<strong>解耦合</strong>(Decouple)</p>
+<p>将上图的算法分解为三个步骤：</p>
+<ol>
+<li>  找到所有点</li>
+<li>  复制所有点</li>
+<li>  复制所有边</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span>(<span class="params">self, node</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># step 1: find nodes</span></span><br><span class="line">    nodes =. self.find_nodes_by_bfs(node)</span><br><span class="line">    <span class="comment"># step 2: copy nodes</span></span><br><span class="line">    mapping = self.copy_nodes(nodes)</span><br><span class="line">    <span class="comment"># step 3: copy edges</span></span><br><span class="line">    self.copy_edges(nodes, mapping)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mapping[node]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_nodes_by_bfs</span>(<span class="params">self, node</span>):</span></span><br><span class="line">    queue = collections.deque([node])</span><br><span class="line">    visited = <span class="built_in">set</span>([node])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        curt_node = queue.popleft()</span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> curt_node.neighbors:</span><br><span class="line">            <span class="keyword">if</span> neighbor <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            visited.add(neighbor)</span><br><span class="line">            queue.append(neighbor)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(visited)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_nodes</span>(<span class="params">self, nodes</span>):</span></span><br><span class="line">    mapping = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">        mapping[node] = UndirectedGraphNode(node.label)</span><br><span class="line">    <span class="keyword">return</span> mapping</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_edges</span>(<span class="params">self, nodes, mapping</span>):</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">        new_node = mapping[node]</span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">            new_neighbor = mapping[neighbor]</span><br><span class="line">            new_node.neighbors.append(new_neighbor)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>这样修改的代码在结构上比较清晰明了，阅读起来也没有压力，最重要的是降低了代码之间的耦合性。</p>
+<blockquote>
+<p>  重复代码和全局变量的问题会在后面的课程中学习到。</p>
+</blockquote>
+<h5 id="代码质量-Code-Quality"><a href="#代码质量-Code-Quality" class="headerlink" title="代码质量(Code Quality)"></a>代码质量(Code Quality)</h5><p>你认为的代码质量：</p>
+<ul>
+<li>  代码要加注释（这一点本身没错）</li>
+</ul>
+<p>注释固然重要，但是使用含义清晰的变量名命名 + 简单易读的处理逻辑更为重要。我们写注释的目的就是让人看懂我们所写代码的含义，有时候一个好的命名规范可以让他人仅凭变量名或者函数名就能知道它要实现的功能。</p>
+<ul>
+<li>  代码越短越好</li>
+</ul>
+<p>事实上，通过适当的子函数化的代码包装，并且多加空行，虽然在观感上代码更长了，但是能够让你的代码更加易读、易维护，且不易错。</p>
+<p>好的代码质量真的那么重要么？</p>
+<p>回答是肯定的，代码就像一件艺术品，越是高级的程序员，越有代码洁癖越是高级别的面试官，越在意你的代码质量。</p>
+<ul>
+<li>  拥有好的代码质量，会让面试官在心里为你默默加分；如果质量很差，面试官会在心里为你默默扣分。最终是否导致Hire / No Hire，就是一个量变引起质变的问题。</li>
+<li>  拥有好的代码质量，还能够让你的代码少出BUG。你以为只需要细心就可以不出BUG？但是通过<strong>子函数化、避免全局变量</strong>等手段可以让你出 BUG 的概率大大降低。</li>
+</ul>
+<h4 id="面试评价体系"><a href="#面试评价体系" class="headerlink" title="面试评价体系"></a>面试评价体系</h4><ul>
+<li>逻辑思维能力(Logicality)<ul>
+<li>  是否能很快的想到一个Working Solution</li>
+<li>  是否能够在面试官点出问题后优化自己的Solution</li>
+</ul>
+</li>
+<li>代码质量(Code Quality)<ul>
+<li>  代码到底写完没有</li>
+<li>代码风格好不好<ul>
+<li>  可读性</li>
+<li>  变量名、函数名命名</li>
+<li>  空格和空行的正确使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>  特殊情况/边界情况(Edge Cases)</li>
+<li>  Bug Free</li>
+</ul>
+<h4 id="沟通能力"><a href="#沟通能力" class="headerlink" title="沟通能力"></a>沟通能力</h4><p>把面试官当作Co-worker，而不是考官，让面试官愿意和你一起工作。</p>
+<h6 id="几个面试沟通法则"><a href="#几个面试沟通法则" class="headerlink" title="几个面试沟通法则"></a>几个面试沟通法则</h6><p>做一个题之前，先沟通清楚，得到面试官肯定，再开始写代码，写完以后再解释 </p>
+<ul>
+<li><p>  不要闷头写 </p>
+</li>
+<li><p>  不要一边写一边解释太多（容易写不完） </p>
+</li>
+</ul>
+<p>可以要提示，经过提示做出来的题，也是可以拿到Hire的 </p>
+<ul>
+<li>  但是先自己努力想一下，别太容易放弃，容易让人觉得不会主动思考问题 </li>
+</ul>
+<p>不要和面试官吵架 </p>
+<ul>
+<li><p>  面试官大概率是对的，面试官是带着答案来面试你的 </p>
+</li>
+<li><p>  不同意见在大部分情况下，很可能是你自己想错了 </p>
+</li>
+</ul>
+<p>会就会，不会就不会，不要遮遮掩掩，坦诚自信很重要 </p>
+<ul>
+<li><p>  容易让人觉得和你沟通“不顺畅” </p>
+</li>
+<li><p>  做过的题就说做过，不要故意说没做过 </p>
+</li>
+<li><p>  因为他既然已经怀疑你做过了，即使你说没有，他也无法打消这个顾虑，还不如让他换</p>
+</li>
+</ul>
+<h6 id="算法面试九步法"><a href="#算法面试九步法" class="headerlink" title="算法面试九步法"></a>算法面试九步法</h6><p>理解问题、复述问题、澄清问题、初步想法、实例分析、书写代码、测试检验、评判性能、优化解法</p>
+<h4 id="刷题"><a href="#刷题" class="headerlink" title="刷题"></a>刷题</h4><p>刷题刷到什么程度去面试才够？</p>
+<p>你永远没有觉得自己准备好的那一天！LintCode 可以帮你解决烦恼！</p>
+<p>刷题的三个维度：</p>
+<ul>
+<li>算法能力<ul>
+<li>  LintCode CAT(Code Ability Test)可以帮你评估算法能力</li>
+<li>  想拿到Offer，至少要达到黄金</li>
+</ul>
+</li>
+<li>Bug Free能力<ul>
+<li>  每道题的平均提交次数可以评估你的Bug Free能力，一般情况下平均每道题不超过3次</li>
+</ul>
+</li>
+<li>题量<ul>
+<li>  这是很多人只关心的维度，但不能否认它是最弱的维度</li>
+</ul>
+</li>
+</ul>
+<h4 id="面试算法-VS-算法"><a href="#面试算法-VS-算法" class="headerlink" title="面试算法 VS. 算法"></a>面试算法 VS. 算法</h4><p>如果你还在看《算法导论》？赶紧扔掉 ——我宁可你看的是《Cracking The Coding Interview》 </p>
+<p>也请不要去看普林斯顿的算法公开课 ——很多内容面试依然不考，或考得很少 </p>
+<p>为什么？ —— 面试算法不等于算法</p>
+<blockquote>
+<p>  当然，这是一种应试思维，如果想在算法上有些学术的研究，《算法导论》还是少不了的，我自己出于兴趣也会时不时拿出来翻几页。</p>
+</blockquote>
+<p>也就是说面试的算法是算法体系里面最“虚”的部分。算法的种类繁多，但真正在面试中会考到的往往十分有限，所以必须给算法面试“划考点”。</p>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130143746198.png" alt="image-20211130143746198"></p>
+<p>上述图片中，越红考得越多，灰色不考或者出现概率低于千分之一。</p>
+<p>线段数值得关注一下，因为它具有通用性，知道了线段树，平衡排序二叉树、跳跃表等不成问题。</p>
+<blockquote>
+<p>  一个判断某算法考不考的不成文的技巧：</p>
+<p>  带名字的都不考</p>
+<p>  Morris / Dijkstra / Floyd / Manacher / Tarjan / Dinic / KMP </p>
+</blockquote>
+<p>算法面试难度的趋势是不断增加，但不会难到离谱：</p>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130144208596.png" alt="image-20211130144208596"></p>
+<p>算法面试知识点及考频：</p>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130145055125.png" alt="image-20211130145055125"></p>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130145138502.png" alt="image-20211130145138502"></p>
+<p><img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130145247217.png" alt="image-20211130145247217"></p>
+<p>去 FMAG 是否一定要刷难题？</p>
+<ul>
+<li><p>Google（活少钱多） </p>
+<ul>
+<li>  要刷难题较高的题目 </li>
+<li>  算法考察范围很广，特别喜欢DP和红黑树 Red-black Tree，线段树 Segment Tree </li>
+</ul>
+</li>
+<li><p>Facebook（活多钱多）, Amazon（活多钱少）, Microsoft（活少钱少） 等大厂 </p>
+<ul>
+<li>  刷中等题就够了，更加要求bug free </li>
+</ul>
+</li>
+<li><p>其他中小厂 </p>
+<ul>
+<li>  刷中等题就够了 </li>
+<li>  算法面试考察范围很窄</li>
+<li>  Binary Tree, LinkedList, String, Array这些基本数据结构相关的题掌握即可</li>
+</ul>
+</li>
+</ul>
+<p>不同的岗位算法面试难度不同吗？</p>
+<p>是的，不同，<strong>越后端越难，越前端越简单</strong>。</p>
+<table>
+<thead>
+<tr>
+<th align="center">难度</th>
+<th align="center">职位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">超简单</td>
+<td align="center">Data Analyst</td>
+</tr>
+<tr>
+<td align="center">简单</td>
+<td align="center">Web Frontend Engineer / Mobile Engineer / Data Engineer</td>
+</tr>
+<tr>
+<td align="center">中等</td>
+<td align="center">Software Development Engineer / Site Reliability Engineer (运维)</td>
+</tr>
+<tr>
+<td align="center">难</td>
+<td align="center">Infrastructure Engineer</td>
+</tr>
+<tr>
+<td align="center">超难</td>
+<td align="center">Machine Learning Engineer / Data Scientist</td>
+</tr>
+</tbody></table>
+<h4 id="其他面试"><a href="#其他面试" class="headerlink" title="其他面试"></a>其他面试</h4><p>技术岗除了面算法题，还有其他哪些类型的面试？</p>
+<ul>
+<li><p>系统设计 System Design / Architechture Design</p>
+<ul>
+<li>  系统设计System Design是一种非常常见的面试形式，通常出现在后端相关的岗位中，前端工程师和数据工程师一般不太考察，应届生也可能会考一些简单的系统设计。</li>
+</ul>
+<p>  <img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130150008706.png" alt="image-20211130150008706"></p>
+</li>
+<li><p>面向对象设计 Objected Oriented Design</p>
+<ul>
+<li>  互联网公司一般考System Design多，软件公司一般考OOD；互联网公司 = Facebook / Google / Amazon之流；软件公司 = Microsoft / Apple / Oracle之流；应届生New Grad通常会考OOD多于System Design。</li>
+</ul>
+<p>  <img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130150129669.png" alt="image-20211130150129669"></p>
+</li>
+<li><p>行为面试 Behavior Question</p>
+<ul>
+<li>  BQ面试是现在各大公司技术岗位几乎必须面的一轮面试，通常是其他非技术岗位的人面试你，比如 HR, Product/Project Manager, Designer。</li>
+</ul>
+<p>  <img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130150318129.png" alt="image-20211130150318129"></p>
+<p>  <img src="../../../../../Library/Application%20Support/typora-user-images/image-20211130150335809.png" alt="image-20211130150335809"></p>
+</li>
+<li><p>  简历面试 Experience Interview</p>
+</li>
+</ul>
 
                 
             </div>
@@ -502,7 +708,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/11/29/hello-world/">http://example.com/2021/11/29/hello-world/</a>
+                    <a href="http://example.com/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/">http://example.com/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -708,7 +914,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2021-11-29T19-20-47',
+        id: '2021-11-30T12-16-25',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -732,7 +938,7 @@
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Nov 29 2021 19:20:47 GMT+0800',
+    id: 'Tue Nov 30 2021 12:16:25 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -757,9 +963,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/29/hello-world/';
-        this.page.identifier = '/2021/11/29/hello-world/';
-        this.page.title = 'Hello World';
+        this.page.url = 'http://example.com/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/';
+        this.page.identifier = '/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/';
+        this.page.title = '';
     };
     let disqus_shortname = '';
 
@@ -811,9 +1017,10 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/">
                     <div class="card-image">
@@ -831,9 +1038,9 @@ gitment.render('gitment-content');
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -842,6 +1049,7 @@ gitment.render('gitment-content');
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -852,13 +1060,13 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+                <a href="/2021/11/29/hello-world/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="01线性回归">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">01线性回归</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -873,27 +1081,11 @@ gitment.render('gitment-content');
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            卫佳 CQUer
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%9E%E5%BD%92/">
-                        <span class="chip bg-color">回归</span>
-                    </a>
-                    
                 </div>
                 
             </div>

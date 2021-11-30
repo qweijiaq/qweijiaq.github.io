@@ -497,11 +497,8 @@
 <h6 id="代码从没被人review过"><a href="#代码从没被人review过" class="headerlink" title="代码从没被人review过"></a>代码从没被人review过</h6><p>如何在公司获得提升？</p>
 <p>很多人认为在公司里面多做项目就可以获得巨大的提升，这只是一个半对的答案。事实上，当我们的代码被前辈（更高级别的程序员）review，并给你feedback一些建议，我们根据这些反馈做出积极的改变时，往往能够得到最大的提升。与学习编程时不同，工程中的编程更加考验我们的工程思维，一段好懂的代码往往比一段简短的代码重要的多。当我们写的代码从来没有被review时，我们往往只在意我们所写的代码是否正确，而去忽视了它是否好理解，是否能够更加的优化。这时，前辈的某些建议可能是醍醐灌顶的，他可能帮你解决了你一辈子不能解决甚至不会发现的问题，这种时候带来的提升很可能是质变的。</p>
 <p>就拿上图来说，<code>grid[i][j] = 1 or 2</code>的写法没有语法错误，运行起来也正常，但是如果加上：</p>
-<pre><code class="Python">class GridType:
-    PEOPLE = 0
-    ZOMBIE = 1
-    WALL = 2
-</code></pre>
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GridType</span>:</span></span><br><span class="line">    PEOPLE = <span class="number">0</span></span><br><span class="line">    ZOMBIE = <span class="number">1</span></span><br><span class="line">    WALL = <span class="number">2</span></span><br></pre></td></tr></tbody></table></figure>
+
 <p>然后将代码改为<code>grid[i][j] = GridType.ZOMBIE or GridType.WALL</code>，虽然增加了几行代码，但会极大增加可读性，让面试官觉得你是一个具有工程思维的人。</p>
 <h6 id="写代码经验太少"><a href="#写代码经验太少" class="headerlink" title="写代码经验太少"></a>写代码经验太少</h6><p><img src="/../images/image-20211130134111434.png" alt="image-20211130134111434"></p>
 <p>写代码经验太少也是一个需要解决的问题，这需要平时不断的实战、不断的思考、不断的debug。如上图就是一段有问题的代码。它使用到了<code>or</code>这一逻辑运算符，我们知道<code>and</code>和<code>or</code>都是遵循<strong>短路原则</strong>的，对于这里面的<code>or</code>来说，如果前面的<code>i &lt; len(list)</code>成立，就直接默认这个条件判断是<code>True</code>的，不会去判断后面的条件<code>j &lt; len(list2)</code>是否成立，从而可能导致程序出现bug。</p>
@@ -521,44 +518,8 @@
 <li>  复制所有点</li>
 <li>  复制所有边</li>
 </ol>
-<pre><code class="Python">def cloneGraph(self, node):
-    if not node:
-        return None
-    
-    # step 1: find nodes
-    nodes =. self.find_nodes_by_bfs(node)
-    # step 2: copy nodes
-    mapping = self.copy_nodes(nodes)
-    # step 3: copy edges
-    self.copy_edges(nodes, mapping)
-    
-    return mapping[node]
+<figure class="highlight python"><table><tbody><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span>(<span class="params">self, node</span>):</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># step 1: find nodes</span></span><br><span class="line">    nodes =. self.find_nodes_by_bfs(node)</span><br><span class="line">    <span class="comment"># step 2: copy nodes</span></span><br><span class="line">    mapping = self.copy_nodes(nodes)</span><br><span class="line">    <span class="comment"># step 3: copy edges</span></span><br><span class="line">    self.copy_edges(nodes, mapping)</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> mapping[node]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_nodes_by_bfs</span>(<span class="params">self, node</span>):</span></span><br><span class="line">    queue = collections.deque([node])</span><br><span class="line">    visited = <span class="built_in">set</span>([node])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        curt_node = queue.popleft()</span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> curt_node.neighbors:</span><br><span class="line">            <span class="keyword">if</span> neighbor <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            visited.add(neighbor)</span><br><span class="line">            queue.append(neighbor)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">list</span>(visited)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_nodes</span>(<span class="params">self, nodes</span>):</span></span><br><span class="line">    mapping = {}</span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">        mapping[node] = UndirectedGraphNode(node.label)</span><br><span class="line">    <span class="keyword">return</span> mapping</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">copy_edges</span>(<span class="params">self, nodes, mapping</span>):</span></span><br><span class="line">    <span class="keyword">for</span> node <span class="keyword">in</span> nodes:</span><br><span class="line">        new_node = mapping[node]</span><br><span class="line">        <span class="keyword">for</span> neighbor <span class="keyword">in</span> node.neighbors:</span><br><span class="line">            new_neighbor = mapping[neighbor]</span><br><span class="line">            new_node.neighbors.append(new_neighbor)</span><br></pre></td></tr></tbody></table></figure>
 
-def find_nodes_by_bfs(self, node):
-    queue = collections.deque([node])
-    visited = set([node])
-    while queue:
-        curt_node = queue.popleft()
-        for neighbor in curt_node.neighbors:
-            if neighbor in visited:
-                continue
-            visited.add(neighbor)
-            queue.append(neighbor)
-    return list(visited)
-
-def copy_nodes(self, nodes):
-    mapping = {}
-    for node in nodes:
-        mapping[node] = UndirectedGraphNode(node.label)
-    return mapping
-
-def copy_edges(self, nodes, mapping):
-    for node in nodes:
-        new_node = mapping[node]
-        for neighbor in node.neighbors:
-            new_neighbor = mapping[neighbor]
-            new_node.neighbors.append(new_neighbor)
-</code></pre>
 <p>这样修改的代码在结构上比较清晰明了，阅读起来也没有压力，最重要的是降低了代码之间的耦合性。</p>
 <blockquote>
 <p>  重复代码和全局变量的问题会在后面的课程中学习到。</p>

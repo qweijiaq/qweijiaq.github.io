@@ -110,34 +110,16 @@ pre {
     content: " ";
     position: absolute;
     border-radius: 50%;
-    background: #ff5f56;
-    width: 12px;
+    background: #ffffee;
+    width: 20px;
     height: 12px;
     top: 0;
     left: 12px;
     margin-top: 12px;
-    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    /*-webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;*/
 }
 
-code {
-    padding: 1px 5px;
-    top: 13px !important;
-    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    font-size: 0.91rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-    border-radius: 2px;
-}
-
-.code_copy {
-    position: absolute;
-    top: 0.7rem;
-    right: 25px;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-}
 
 .codecopy_notice {
     position: absolute;
@@ -148,54 +130,24 @@ code {
     opacity: 0;
 }
 
-.code_lang {
-    position: absolute;
-    top: 1.2rem;
-    right: 46px;
-    line-height: 0;
-    font-weight: bold;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    z-index: 1;
-    filter: invert(50%);
-    cursor: pointer;
-}
 
-.code-expand {
-    position: absolute;
-    top: 4px;
-    right: 0;
-    filter: invert(50%);
-    padding: 7px;
-    z-index: 999 !important;
-    cursor: pointer;
-    transition: all .3s;
-    transform: rotate(0deg);
-}
 
-.code-closed .code-expand {
-    transform: rotate(-180deg) !important;
-    transition: all .3s;
-}
-
-.code-closed pre::before {
-    height: 0;
-}
 
 pre code {
     padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
+    color: #ff8888;
+    background-color: #fefefe;
 }
 
 /* 键盘 kbd 标签样式 */
 kbd {
     margin: 0 3px;
-    padding: 3px 5px;
-    border-radius: 3px;
+    padding: 2px 2px;
+    border-radius: 2px;
     border: 1px solid #b4b4b4;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 2px 1px 0 rgba(255, 255, 255, 0.6) inset;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-    font-size: 0.9rem;
+    font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif;
+    font-size: 16px;
     font-weight: 600;
     background-color: #f8f8f8;
     color: #34495e;
@@ -2146,18 +2098,13 @@ p.search-result-summary{
 
 code {
     padding: 1px 5px;
-    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    /* font-size: 0.91rem; */
-    color: #e96900;
-    background-color: #f8f8f8;
+    font-family: 'Microsoft YaHei','SF Pro Display',Roboto,Noto,Arial,'PingFang SC',sans-serif;
+    font-size: 16px;
+    color: #ff3333;
+    background-color: #fefefe;
     border-radius: 2px;
 }
 
-pre code {
-    padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
-}
 
 pre[class*="language-"] {
     padding: 1.2em;
@@ -2166,7 +2113,7 @@ pre[class*="language-"] {
 
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #e8eaf6;
+    color: #fefefe;
     white-space: pre-wrap !important;
 } */
 
@@ -2186,41 +2133,13 @@ pre[class*="language-"] {
 pre {
     padding: 1.5rem !important;
     margin: 1rem 0 !important;
-    background: #272822;
+    background: #fefefe;
     overflow: auto;
     border-radius: 0.35rem;
     tab-size: 4;
 }
 
-pre::before {
-    content: "";
-    height: 16px;
-    margin-bottom: 0;
-    display: block;
-}
 
-pre::after {
-    content: " ";
-    position: absolute;
-    border-radius: 50%;
-    background: #ff5f56;
-    width: 12px;
-    height: 12px;
-    top: 0;
-    left: 12px;
-    margin-top: 12px;
-    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
-}
-
-code {
-    padding: 1px 5px;
-    font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
-    font-size: 0.91rem;
-    color: #e96900;
-    background-color: #f8f8f8;
-    border-radius: 2px;
-}
 
 .code_copy {
     position: absolute;
@@ -2264,19 +2183,34 @@ code {
     height: 0px;
 }
 
-pre code {
-    padding: 0;
-    color: #e8eaf6;
-    background-color: #272822;
+pre::before {
+    content: "";
+    height: 16px;
+    margin-bottom: 0;
+    display: block;
 }
 
-pre[class*="language-"] {
-    padding: 1.2em;
-    margin: .5em 0;
+pre::after {
+    content: " ";
+    position: absolute;
+    border-radius: 50%;
+    background: #ffffee;
+    width: 20px;
+    height: 12px;
+    top: 0;
+    left: 12px;
+    margin-top: 12px;
+    -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
-    color: #e8eaf6;
-    white-space: pre-wrap !important;
-}
+
+
+
+
+
+
+
+
+
+

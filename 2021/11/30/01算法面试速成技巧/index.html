@@ -9,7 +9,7 @@
 写代码不超过3个月
 为什么面试官会认为上述代码是由代码基础不足三个月的人写出的？
 
-变量含义不明。好的代码要求每一个（至少重要的）变量和函数含义明">
+  变量含义不明。好的代码要求每一个（至少重要的）变量和函数含">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -487,51 +487,51 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h4 id="面试官眼中的求职者"><a href="#面试官眼中的求职者" class="headerlink" title="面试官眼中的求职者"></a>面试官眼中的求职者</h4><p>HR主要通过你的衣着、谈吐和外貌来看你；技术面试官则是通过你的代码来看你。</p>
-<h6 id="写代码不超过3个月"><a href="#写代码不超过3个月" class="headerlink" title="写代码不超过3个月"></a>写代码不超过3个月</h6><p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130121847511.png" alt=""></p>
+<h6 id="写代码不超过3个月"><a href="#写代码不超过3个月" class="headerlink" title="写代码不超过3个月"></a>写代码不超过3个月</h6><p><img src="/../images/image-20211130121847511.png"></p>
 <p>为什么面试官会认为上述代码是由代码基础不足三个月的人写出的？</p>
 <ol>
-<li>变量含义不明。好的代码要求每一个（至少重要的）变量和函数含义明了，最好直接能通过命名来得知它的功能。</li>
-<li>嵌套过多。嵌套越多也就意味着代码出错的可能性越大，可读性也越差，一般代码的嵌套最好不要超过三层，如果实在需要更多层的嵌套，可以将其封装在一个函数里。</li>
+<li>  变量含义不明。好的代码要求每一个（至少重要的）变量和函数含义明了，最好直接能通过命名来得知它的功能。</li>
+<li>  嵌套过多。嵌套越多也就意味着代码出错的可能性越大，可读性也越差，一般代码的嵌套最好不要超过三层，如果实在需要更多层的嵌套，可以将其封装在一个函数里。</li>
 </ol>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130122602831.png" alt=""></p>
+<p><img src="/../images/image-20211130122602831.png"></p>
 <h6 id="代码从没被人review过"><a href="#代码从没被人review过" class="headerlink" title="代码从没被人review过"></a>代码从没被人review过</h6><p>如何在公司获得提升？</p>
 <p>很多人认为在公司里面多做项目就可以获得巨大的提升，这只是一个半对的答案。事实上，当我们的代码被前辈（更高级别的程序员）review，并给你feedback一些建议，我们根据这些反馈做出积极的改变时，往往能够得到最大的提升。与学习编程时不同，工程中的编程更加考验我们的工程思维，一段好懂的代码往往比一段简短的代码重要的多。当我们写的代码从来没有被review时，我们往往只在意我们所写的代码是否正确，而去忽视了它是否好理解，是否能够更加的优化。这时，前辈的某些建议可能是醍醐灌顶的，他可能帮你解决了你一辈子不能解决甚至不会发现的问题，这种时候带来的提升很可能是质变的。</p>
 <p>就拿上图来说，<code>grid[i][j] = 1 or 2</code>的写法没有语法错误，运行起来也正常，但是如果加上：</p>
-<pre><code class="lang-Python">class GridType:
+<pre><code class="Python">class GridType:
     PEOPLE = 0
     ZOMBIE = 1
     WALL = 2
 </code></pre>
 <p>然后将代码改为<code>grid[i][j] = GridType.ZOMBIE or GridType.WALL</code>，虽然增加了几行代码，但会极大增加可读性，让面试官觉得你是一个具有工程思维的人。</p>
-<h6 id="写代码经验太少"><a href="#写代码经验太少" class="headerlink" title="写代码经验太少"></a>写代码经验太少</h6><p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130134111434.png" alt=""></p>
+<h6 id="写代码经验太少"><a href="#写代码经验太少" class="headerlink" title="写代码经验太少"></a>写代码经验太少</h6><p><img src="/../images/image-20211130134111434.png"></p>
 <p>写代码经验太少也是一个需要解决的问题，这需要平时不断的实战、不断的思考、不断的debug。如上图就是一段有问题的代码。它使用到了<code>or</code>这一逻辑运算符，我们知道<code>and</code>和<code>or</code>都是遵循<strong>短路原则</strong>的，对于这里面的<code>or</code>来说，如果前面的<code>i &lt; len(list)</code>成立，就直接默认这个条件判断是<code>True</code>的，不会去判断后面的条件<code>j &lt; len(list2)</code>是否成立，从而可能导致程序出现bug。</p>
 <h6 id="缺乏项目经验"><a href="#缺乏项目经验" class="headerlink" title="缺乏项目经验"></a>缺乏项目经验</h6><ul>
 <li>代码耦合度太高，逻辑交杂在一起<ul>
-<li>难维护</li>
-<li>难读懂</li>
-<li>易出错</li>
+<li>  难维护</li>
+<li>  难读懂</li>
+<li>  易出错</li>
 </ul>
 </li>
 </ul>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130135000419.png" alt=""></p>
+<p><img src="/../images/image-20211130135000419.png"></p>
 <p>解决办法：<strong>解耦合</strong>(Decouple)</p>
 <p>将上图的算法分解为三个步骤：</p>
 <ol>
-<li>找到所有点</li>
-<li>复制所有点</li>
-<li>复制所有边</li>
+<li>  找到所有点</li>
+<li>  复制所有点</li>
+<li>  复制所有边</li>
 </ol>
-<pre><code class="lang-Python">def cloneGraph(self, node):
+<pre><code class="Python">def cloneGraph(self, node):
     if not node:
         return None
-
+    
     # step 1: find nodes
     nodes =. self.find_nodes_by_bfs(node)
     # step 2: copy nodes
     mapping = self.copy_nodes(nodes)
     # step 3: copy edges
     self.copy_edges(nodes, mapping)
-
+    
     return mapping[node]
 
 def find_nodes_by_bfs(self, node):
@@ -565,64 +565,64 @@ def copy_edges(self, nodes, mapping):
 </blockquote>
 <h5 id="代码质量-Code-Quality"><a href="#代码质量-Code-Quality" class="headerlink" title="代码质量(Code Quality)"></a>代码质量(Code Quality)</h5><p>你认为的代码质量：</p>
 <ul>
-<li>代码要加注释（这一点本身没错）</li>
+<li>  代码要加注释（这一点本身没错）</li>
 </ul>
 <p>注释固然重要，但是使用含义清晰的变量名命名 + 简单易读的处理逻辑更为重要。我们写注释的目的就是让人看懂我们所写代码的含义，有时候一个好的命名规范可以让他人仅凭变量名或者函数名就能知道它要实现的功能。</p>
 <ul>
-<li>代码越短越好</li>
+<li>  代码越短越好</li>
 </ul>
 <p>事实上，通过适当的子函数化的代码包装，并且多加空行，虽然在观感上代码更长了，但是能够让你的代码更加易读、易维护，且不易错。</p>
 <p>好的代码质量真的那么重要么？</p>
 <p>回答是肯定的，代码就像一件艺术品，越是高级的程序员，越有代码洁癖越是高级别的面试官，越在意你的代码质量。</p>
 <ul>
-<li>拥有好的代码质量，会让面试官在心里为你默默加分；如果质量很差，面试官会在心里为你默默扣分。最终是否导致Hire / No Hire，就是一个量变引起质变的问题。</li>
-<li>拥有好的代码质量，还能够让你的代码少出BUG。你以为只需要细心就可以不出BUG？但是通过<strong>子函数化、避免全局变量</strong>等手段可以让你出 BUG 的概率大大降低。</li>
+<li>  拥有好的代码质量，会让面试官在心里为你默默加分；如果质量很差，面试官会在心里为你默默扣分。最终是否导致Hire / No Hire，就是一个量变引起质变的问题。</li>
+<li>  拥有好的代码质量，还能够让你的代码少出BUG。你以为只需要细心就可以不出BUG？但是通过<strong>子函数化、避免全局变量</strong>等手段可以让你出 BUG 的概率大大降低。</li>
 </ul>
 <h4 id="面试评价体系"><a href="#面试评价体系" class="headerlink" title="面试评价体系"></a>面试评价体系</h4><ul>
 <li>逻辑思维能力(Logicality)<ul>
-<li>是否能很快的想到一个Working Solution</li>
-<li>是否能够在面试官点出问题后优化自己的Solution</li>
+<li>  是否能很快的想到一个Working Solution</li>
+<li>  是否能够在面试官点出问题后优化自己的Solution</li>
 </ul>
 </li>
 <li>代码质量(Code Quality)<ul>
-<li>代码到底写完没有</li>
+<li>  代码到底写完没有</li>
 <li>代码风格好不好<ul>
-<li>可读性</li>
-<li>变量名、函数名命名</li>
-<li>空格和空行的正确使用</li>
+<li>  可读性</li>
+<li>  变量名、函数名命名</li>
+<li>  空格和空行的正确使用</li>
 </ul>
 </li>
 </ul>
 </li>
-<li>特殊情况/边界情况(Edge Cases)</li>
-<li>Bug Free</li>
+<li>  特殊情况/边界情况(Edge Cases)</li>
+<li>  Bug Free</li>
 </ul>
 <h4 id="沟通能力"><a href="#沟通能力" class="headerlink" title="沟通能力"></a>沟通能力</h4><p>把面试官当作Co-worker，而不是考官，让面试官愿意和你一起工作。</p>
 <h6 id="几个面试沟通法则"><a href="#几个面试沟通法则" class="headerlink" title="几个面试沟通法则"></a>几个面试沟通法则</h6><p>做一个题之前，先沟通清楚，得到面试官肯定，再开始写代码，写完以后再解释 </p>
 <ul>
-<li><p>不要闷头写 </p>
+<li><p>  不要闷头写 </p>
 </li>
-<li><p>不要一边写一边解释太多（容易写不完） </p>
+<li><p>  不要一边写一边解释太多（容易写不完） </p>
 </li>
 </ul>
 <p>可以要提示，经过提示做出来的题，也是可以拿到Hire的 </p>
 <ul>
-<li>但是先自己努力想一下，别太容易放弃，容易让人觉得不会主动思考问题 </li>
+<li>  但是先自己努力想一下，别太容易放弃，容易让人觉得不会主动思考问题 </li>
 </ul>
 <p>不要和面试官吵架 </p>
 <ul>
-<li><p>面试官大概率是对的，面试官是带着答案来面试你的 </p>
+<li><p>  面试官大概率是对的，面试官是带着答案来面试你的 </p>
 </li>
-<li><p>不同意见在大部分情况下，很可能是你自己想错了 </p>
+<li><p>  不同意见在大部分情况下，很可能是你自己想错了 </p>
 </li>
 </ul>
 <p>会就会，不会就不会，不要遮遮掩掩，坦诚自信很重要 </p>
 <ul>
-<li><p>容易让人觉得和你沟通“不顺畅” </p>
+<li><p>  容易让人觉得和你沟通“不顺畅” </p>
 </li>
-<li><p>做过的题就说做过，不要故意说没做过 </p>
+<li><p>  做过的题就说做过，不要故意说没做过 </p>
 </li>
-<li><p>因为他既然已经怀疑你做过了，即使你说没有，他也无法打消这个顾虑，还不如让他换</p>
+<li><p>  因为他既然已经怀疑你做过了，即使你说没有，他也无法打消这个顾虑，还不如让他换</p>
 </li>
 </ul>
 <h6 id="算法面试九步法"><a href="#算法面试九步法" class="headerlink" title="算法面试九步法"></a>算法面试九步法</h6><p>理解问题、复述问题、澄清问题、初步想法、实例分析、书写代码、测试检验、评判性能、优化解法</p>
@@ -631,16 +631,16 @@ def copy_edges(self, nodes, mapping):
 <p>刷题的三个维度：</p>
 <ul>
 <li>算法能力<ul>
-<li>LintCode CAT(Code Ability Test)可以帮你评估算法能力</li>
-<li>想拿到Offer，至少要达到黄金</li>
+<li>  LintCode CAT(Code Ability Test)可以帮你评估算法能力</li>
+<li>  想拿到Offer，至少要达到黄金</li>
 </ul>
 </li>
 <li>Bug Free能力<ul>
-<li>每道题的平均提交次数可以评估你的Bug Free能力，一般情况下平均每道题不超过3次</li>
+<li>  每道题的平均提交次数可以评估你的Bug Free能力，一般情况下平均每道题不超过3次</li>
 </ul>
 </li>
 <li>题量<ul>
-<li>这是很多人只关心的维度，但不能否认它是最弱的维度</li>
+<li>  这是很多人只关心的维度，但不能否认它是最弱的维度</li>
 </ul>
 </li>
 </ul>
@@ -651,7 +651,7 @@ def copy_edges(self, nodes, mapping):
 <p>  当然，这是一种应试思维，如果想在算法上有些学术的研究，《算法导论》还是少不了的，我自己出于兴趣也会时不时拿出来翻几页。</p>
 </blockquote>
 <p>也就是说面试的算法是算法体系里面最“虚”的部分。算法的种类繁多，但真正在面试中会考到的往往十分有限，所以必须给算法面试“划考点”。</p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130143746198.png" alt=""></p>
+<p><img src="/../images/image-20211130143746198.png"></p>
 <p>上述图片中，越红考得越多，灰色不考或者出现概率低于千分之一。</p>
 <p>线段数值得关注一下，因为它具有通用性，知道了线段树，平衡排序二叉树、跳跃表等不成问题。</p>
 <blockquote>
@@ -660,88 +660,84 @@ def copy_edges(self, nodes, mapping):
 <p>  Morris / Dijkstra / Floyd / Manacher / Tarjan / Dinic / KMP </p>
 </blockquote>
 <p>算法面试难度的趋势是不断增加，但不会难到离谱：</p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130144208596.png" alt=""></p>
+<p><img src="/../images/image-20211130144208596.png"></p>
 <p>算法面试知识点及考频：</p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130145055125.png" alt=""></p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130145138502.png" alt=""></p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130145247217.png" alt=""></p>
+<p><img src="/../images/image-20211130145055125.png"></p>
+<p><img src="/../images/image-20211130145138502.png"></p>
+<p><img src="/../images/image-20211130145247217.png"></p>
 <p>去 FMAG 是否一定要刷难题？</p>
 <ul>
 <li><p>Google（活少钱多） </p>
 <ul>
-<li>要刷难题较高的题目 </li>
-<li>算法考察范围很广，特别喜欢DP和红黑树 Red-black Tree，线段树 Segment Tree </li>
+<li>  要刷难题较高的题目 </li>
+<li>  算法考察范围很广，特别喜欢DP和红黑树 Red-black Tree，线段树 Segment Tree </li>
 </ul>
 </li>
 <li><p>Facebook（活多钱多）, Amazon（活多钱少）, Microsoft（活少钱少） 等大厂 </p>
 <ul>
-<li>刷中等题就够了，更加要求bug free </li>
+<li>  刷中等题就够了，更加要求bug free </li>
 </ul>
 </li>
 <li><p>其他中小厂 </p>
 <ul>
-<li>刷中等题就够了 </li>
-<li>算法面试考察范围很窄</li>
-<li>Binary Tree, LinkedList, String, Array这些基本数据结构相关的题掌握即可</li>
+<li>  刷中等题就够了 </li>
+<li>  算法面试考察范围很窄</li>
+<li>  Binary Tree, LinkedList, String, Array这些基本数据结构相关的题掌握即可</li>
 </ul>
 </li>
 </ul>
 <p>不同的岗位算法面试难度不同吗？</p>
 <p>是的，不同，<strong>越后端越难，越前端越简单</strong>。</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">难度</th>
-<th style="text-align:center">职位</th>
+<th align="center">难度</th>
+<th align="center">职位</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">超简单</td>
-<td style="text-align:center">Data Analyst</td>
+<tbody><tr>
+<td align="center">超简单</td>
+<td align="center">Data Analyst</td>
 </tr>
 <tr>
-<td style="text-align:center">简单</td>
-<td style="text-align:center">Web Frontend Engineer / Mobile Engineer / Data Engineer</td>
+<td align="center">简单</td>
+<td align="center">Web Frontend Engineer / Mobile Engineer / Data Engineer</td>
 </tr>
 <tr>
-<td style="text-align:center">中等</td>
-<td style="text-align:center">Software Development Engineer / Site Reliability Engineer (运维)</td>
+<td align="center">中等</td>
+<td align="center">Software Development Engineer / Site Reliability Engineer (运维)</td>
 </tr>
 <tr>
-<td style="text-align:center">难</td>
-<td style="text-align:center">Infrastructure Engineer</td>
+<td align="center">难</td>
+<td align="center">Infrastructure Engineer</td>
 </tr>
 <tr>
-<td style="text-align:center">超难</td>
-<td style="text-align:center">Machine Learning Engineer / Data Scientist</td>
+<td align="center">超难</td>
+<td align="center">Machine Learning Engineer / Data Scientist</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <h4 id="其他面试"><a href="#其他面试" class="headerlink" title="其他面试"></a>其他面试</h4><p>技术岗除了面算法题，还有其他哪些类型的面试？</p>
 <ul>
 <li><p>系统设计 System Design / Architechture Design</p>
 <ul>
-<li>系统设计System Design是一种非常常见的面试形式，通常出现在后端相关的岗位中，前端工程师和数据工程师一般不太考察，应届生也可能会考一些简单的系统设计。</li>
+<li>  系统设计System Design是一种非常常见的面试形式，通常出现在后端相关的岗位中，前端工程师和数据工程师一般不太考察，应届生也可能会考一些简单的系统设计。</li>
 </ul>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130150008706.png" alt=""></p>
+<p>  <img src="/../images/image-20211130150008706.png"></p>
 </li>
 <li><p>面向对象设计 Objected Oriented Design</p>
 <ul>
-<li>互联网公司一般考System Design多，软件公司一般考OOD；互联网公司 = Facebook / Google / Amazon之流；软件公司 = Microsoft / Apple / Oracle之流；应届生New Grad通常会考OOD多于System Design。</li>
+<li>  互联网公司一般考System Design多，软件公司一般考OOD；互联网公司 = Facebook / Google / Amazon之流；软件公司 = Microsoft / Apple / Oracle之流；应届生New Grad通常会考OOD多于System Design。</li>
 </ul>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130150129669.png" alt=""></p>
+<p>  <img src="/../images/image-20211130150129669.png"></p>
 </li>
 <li><p>行为面试 Behavior Question</p>
 <ul>
-<li>BQ面试是现在各大公司技术岗位几乎必须面的一轮面试，通常是其他非技术岗位的人面试你，比如 HR, Product/Project Manager, Designer。</li>
+<li>  BQ面试是现在各大公司技术岗位几乎必须面的一轮面试，通常是其他非技术岗位的人面试你，比如 HR, Product/Project Manager, Designer。</li>
 </ul>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130150318129.png" alt=""></p>
-<p><img src="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/images/image-20211130150335809.png" alt=""></p>
+<p>  <img src="/../images/image-20211130150318129.png"></p>
+<p>  <img src="/../images/image-20211130150335809.png"></p>
 </li>
-<li><p>简历面试 Experience Interview</p>
+<li><p>  简历面试 Experience Interview</p>
 </li>
 </ul>
 

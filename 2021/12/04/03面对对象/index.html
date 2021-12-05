@@ -4,21 +4,18 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="01基础语法, 永不退场的闯关族">
-    <meta name="description" content="定义变量package main
+    <meta name="keywords" content="03面对对象, 永不退场的闯关族">
+    <meta name="description" content="结构体和方法package main
 
 import &#34;fmt&#34;
 
-// 可以同时定义多个变量
-// 全局变量不能使用短变量声明
-//全局变量可以声明后不使用
-var (
-	aa =3
-	ss = &#34;kkk&#34;
-	bb = true
-)
+type treeNode struct {
+	value       int
+	left, right *treeNode
+}
 
-// ">
+// 为结构体建立方法
+func (no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -30,7 +27,7 @@ var (
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>01基础语法 | 永不退场的闯关族</title>
+    <title>03面对对象 | 永不退场的闯关族</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -324,12 +321,12 @@ var (
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">01基础语法</h1>
+                    <h1 class="description center-align post-title">03面对对象</h1>
                 </div>
             </div>
         </div>
@@ -478,7 +475,7 @@ var (
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-12-02
+                    2021-12-04
                 </div>
                 
 
@@ -502,494 +499,256 @@ var (
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+                <h4 id="结构体和方法"><a href="#结构体和方法" class="headerlink" title="结构体和方法"></a>结构体和方法</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
 
 import "fmt"
 
-// 可以同时定义多个变量
-// 全局变量不能使用短变量声明
-//全局变量可以声明后不使用
-var (
-	aa =3
-	ss = "kkk"
-	bb = true
-)
-
-// 定义未赋初值的变量
-func variableZeroValue() {
-	// go语言定义变量时，变量名在前，变量类型在后
-	var a int    // 不同于其他语言未初始化的变量为随即在值，go语言未初始化的int类型变量初始值为0
-	var s string // go语言未初始化的string类型变量初始值为空字符串
-	fmt.Printf("%d %q\n", a, s)
+type treeNode struct {
+	value       int
+	left, right *treeNode
 }
 
-// 定义赋初值的变量
-func variableInitialValue() {
-	// go语言中局部变量一旦定义则必须使用，否则编译无法通过
-	var a, b int = 3, 4
-	var s string = "abc"
-	fmt.Println(a, b, s)
+// 为结构体建立方法
+func (node treeNode) print() {
+	fmt.Println(node.value)
 }
 
-// 定义变量时可以省略变量类型，而通过初始值的类型来自动判断变量类型
-func variableTypeDeduction() {
-	var a, b, c, s = 3, 4, true, "def"
-	fmt.Println(a, b, c, s)
+// Go语言创建的方法也是传值
+func (node treeNode) setValue1(value int) {
+	node.value = value
 }
 
-// 短变量声明
-func variableShorter() {
-	// 这种短变量声明只能用在函数内部，且只能用于变量第一次声明
-	// 这也是最推荐的一种写法
-	a, b, c, s := 3, 4, true, "def"
-	b = 5
-	fmt.Println(a, b, c, s)
+// 改为地址传递
+func (node *treeNode) setValue2(value int) {
+	if node == nil {
+		fmt.Println("Setting value to nil node. Ignored.")
+		return
+	}
+	node.value = value
+}
+
+// 自定义创建结构体的工厂函数
+func createNode(value int) *treeNode {
+	return &amp;treeNode{value: value} // 在Go语言中可以返回局部变量的地址
+}
+
+// 结构体遍历
+func (node *treeNode) traverse() {
+	if node == nil {
+		return
+	}
+	node.left.traverse()
+	node.print()
+	node.right.traverse()
 }
 
 func main() {
-	fmt.Println("Hello World")
-	variableZeroValue()
-	variableInitialValue()
-	variableTypeDeduction()
-	variableShorter()
+	// 创建一个结构体，不进行初始化
+	var root treeNode
+	fmt.Println(root)
+
+	//进行赋值
+	root = treeNode{value: 3}
+	root.left = &amp;treeNode{}
+	root.right = &amp;treeNode{5, nil, nil}
+	root.right.left = new(treeNode)
+	root.left.right = createNode(2)
+
+	root.traverse()
+
+	nodes := []treeNode{
+		{value: 3},
+		{},
+		{6, nil, &amp;root},
+	}
+	fmt.Println(nodes)
+
+	root.print()
+
+	root.right.left.setValue1(4)
+	root.right.left.print() // 值没有发生改变，说明是值传递
+	root.right.left.setValue2(4)
+	root.right.left.print() // 值发生改变，说明是地址传递
+
+	// Go语言中值传递和地址传递转换十分灵活
+	pRoot := &amp;root       // 如果函数或方法需要接收地址，则直接将pRoot传入；如果函数或方法需要接收值，则会自动将pRoot对应的值传入
+	pRoot.print()        // 传入pRoot对应的值
+	pRoot.setValue2(100) // 传入pRoot本身
+	pRoot.print()
+
+	var PRoot *treeNode
+	PRoot.setValue2(200)
+	PRoot = &amp;root
+	PRoot.setValue2(300)
+	PRoot.print()
 }
 
 /*
 总结：
-	1. 使用var关键字
-		var a, b, c bool  // 默认均为false
-		var s1, s2 string = "hello world"
-		可以放在函数内部（局部），或直接放在包内（全局）
-		可以使用var()集中定义变量
-	2. 让编译器自动决定类型
-		var a, b, i, s1, s2 = true, false, 3, "hello", "world"
-	3. 使用:=定义变量
-		推荐的写法
-		a, b, i, s1, s2 := true, false, 3, "hello", "world"
-		只能在函数内部使用
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="内建变量类型"><a href="#内建变量类型" class="headerlink" title="内建变量类型"></a>内建变量类型</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
-
-import (
-	"fmt"
-	"math"
-	"math/cmplx"
-)
-
-// 欧拉公式 e ^ {i * pi} + 1 = 0
-func euler() {
-	c := 3 + 4i
-	// cmplx.Abs() -- 对复数取模
-	fmt.Println(cmplx.Abs(c))
-	// 理论上答案是0，但是由于浮点数存在误差，故结果可能存在很小的误差
-	fmt.Println(cmplx.Exp(1i*math.Pi) + 1)
-	fmt.Println(cmplx.Pow(math.E, 1i*math.Pi) + 1)
-	fmt.Printf("%.3f\n", cmplx.Exp(1i*math.Pi)+1) // 取小数点后三位
-}
-
-// 勾股定理
-func triangle() {
-	var a, b int = 3, 4
-	var c int
-	// math.Sqrt()的参数变量是一个float64类型,返回值也是一个float64类型
-	// 强制类型转换 int() float64() ...
-	c = int(math.Sqrt(float64(a*a + b*b)))
-	fmt.Println(c)
-}
-
-func main() {
-	euler()
-	triangle()
-}
-
-/*
-内建变量类型：
-	* bool, string
-	* (u)int, (u)int8, (u)int16, (u)int32, (u)int64, uintptr
-	* byte（8位，ASCII码，只支持英文字符）, rune（32位，Unicode，支持中文和其他语言）
-		** go语言没有char类型,只有rune类型
-	* float32, float64, complex64, complex128
-		** go语言原生支持复数
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="常量和枚举"><a href="#常量和枚举" class="headerlink" title="常量和枚举"></a>常量和枚举</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
-
-import (
-	"fmt"
-	"math"
-)
-
-func consts() {
-	// 指定常量类型
-	const filename string = "abc.txt"
-	// 不指定常量类型，既可以作为int类型，也可以是浮点型，取决于它作用时的需求
-	const a, b = 3, 4
-	var c int
-	// 这时我们发现不需要将a*a+b*b转换为float64类型，因为系统可以自动将其认定为float64型
-	c = int(math.Sqrt(a*a + b*b))
-	// 在下面的环境中，a和b又被认为是int型
-	fmt.Printf("%s %d %T %T\n", filename, c, a, b)
-}
-
-// 普通枚举
-func enums0() {
-	const (
-		cpp    = 0
-		java   = 1
-		python = 2
-		golang = 3
-	)
-	fmt.Println(cpp, java, python, golang)
-}
-
-// 自增枚举，每出现一次const关键字，iota自动置0，没定义一个常量，iota自动加1
-func enums1() {
-	const (
-		cpp = iota
-		java
-		python
-		golang
-	)
-	fmt.Println(cpp, java, python, golang)
-}
-
-func enums2() {
-	const (
-		cpp = iota
-		_
-		python
-		golang
-		javascript
-	)
-
-	// b, kb, mb, gb, tb, pb
-	const (
-		b = 1 &lt;&lt; (10 * iota)
-		kb
-		mb
-		gb
-		tb
-		pb
-	)
-	fmt.Println(cpp, javascript, python, golang)
-	fmt.Println(b, kb, mb, gb, tb, pb)
-}
-
-func main() {
-	consts()
-	enums0()
-	enums1()
-	enums2()
-}
-
-/*
-Go语言的常量有个不同寻常之处，就是许多常量并没有一个明确的基础类型，它们在不同的环境下可能具有不同的类型
-
-总结：
-	常量的定义
-		const filename string = "abc.txt" -- 指定常量类型
-		const a, b = 3, 4 -- 不指定常量类型，数值可以作为各种类型使用
-		可以使用const()同时定义多个常量
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
-
-import (
-	"fmt"
-	"io/ioutil"
-)
-
-func eval(a, b int, op string) int {
-	var result int
-	switch op {
-	case "+":
-		result = a + b
-	case "-":
-		result = a - b
-	case "*":
-		result = a * b
-	case "/":
-		result = a / b
-	default:
-		panic("unsupported operator:" + op)
-	}
-	return result
-}
-
-func grade(score int) string {
-	g := ""
-	switch {
-	case score &lt; 60:
-		g = "F"
-	case score &lt; 80:
-		g = "C"
-	case score &lt; 90:
-		g = "B"
-	case score &lt;= 100:
-		g = "A"
-	default:
-		panic(fmt.Sprintf("Wrong score: %d", score))
-	}
-	return g
-}
-
-func main() {
-	const filename = "abc.txt"
-	contents, err := ioutil.ReadFile(filename) // ReadFile返回的第一个值为文件内容，第二个值为error值，方便判断是否报错，没有问题时返回nil，报错时返回错误信息
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Printf("%s\n", contents)
-	}
-	/* Go语言中还可采用如下写法：
-	if contents,err := ioutil.ReadFile(filename); err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Printf("%s\n", contents)
-	}
-	fmt.Printf("%s\n", contents)  // 因为contents定义在if语句中，所以contents变量不能在if语句范围外使用，故此行代码会报错
-	*/
-
-	fmt.Println(
-		grade(0),
-		grade(59),
-		grade(60),
-		grade(82),
-		grade(99),
-		grade(100),
-		grade(101), // 因为括号换行了，所以结尾要加一个逗号
-	)
-}
-
-/*
-总结：
-	if语句：
-		1. if的条件里不需要括号
-		2. if的条件里可以赋值
-		3. if的条件里赋值的变量作用域就在这个if语句里
-	switch语句：
-		1. switch语句不需要break，会自动break，除非使用fallthrough
-		2. switch后面可以没有表达式
-		3. switch也可以直接跟多个条件
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
-
-import (
-	"bufio"
-	"fmt"
-	"os"
-	"strconv"
-)
-
-// 将十进制数转换为二进制数
-func convertToBin(n int) string {
-	result := ""
-	for ; n &gt; 0; n /= 2 {
-		lsb := n % 2
-		result = strconv.Itoa(lsb) + result // strconv.Itoa()将int型转换为字符串型
-	}
-	return result
-}
-
-// 打印文本内容
-func printFile(filename string) {
-	file, err := os.Open(filename)
-	if err != nil {
-		panic(err)
-	}
-
-	scanner := bufio.NewScanner(file)
-
-	// scanner.Scan()为结束条件，此时可以不写分号
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-	}
-}
-
-// 死循环
-func forever() {
-	for {
-		fmt.Println("abc")
-	}
-}
-
-func main() {
-	fmt.Println(
-		convertToBin(5),  // 101 --&gt; 101  一直对2取余后倒置
-		convertToBin(13), // 1011 --&gt; 1101
-		convertToBin(238417),
-		convertToBin(0), // 空串不显示出来
-	)
-
-	printFile("abc.txt")
-}
-
-/*
-总结：
-	1. for的条件里不需要括号
-	2. for的条件里可以省略初始条件、结束条件、递增表达式
-		* 省略初始条件相当于while
-		* 省略三项就是一个死循环
-	3. Go语言中没有while循环
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
-
-import (
-	"fmt"
-	"math"
-	"reflect"
-	"runtime"
-)
-
-// 返回一个值
-func eval(a, b int, op string) int {
-	var result int
-	switch op {
-	case "+":
-		result = a + b
-	case "-":
-		result = a - b
-	case "*":
-		result = a * b
-	case "/":
-		result = a / b
-	default:
-		panic("unsupported operator:" + op)
-	}
-	return result
-}
-
-// 返回多个值
-func div1(a, b int) (int, int) {
-	return a / b, a % b
-}
-
-func div2(a, b int) (q, r int) {
-	q = a / b
-	r = a % b
-	return
-}
-
-// 两个返回值常用的场景：第二个返回值返回错误信息
-func eval2(a, b int, op string) (int, error) {
-	switch op {
-	case "+":
-		return a + b, nil
-	case "-":
-		return a + b, nil
-	case "*":
-		return a + b, nil
-	case "/":
-		return a + b, nil
-	default:
-		return 0, fmt.Errorf("unsupported operator:" + op)
-	}
-}
-
-// 函数式编程
-// apply函数的第一个参数为op，op是一个函数，函数的参数是两个int类型，且返回值是一个int类型
-// apply函数的第2和3个参数为a和b，均为int类型
-// apply函数的返回值是一个int类型
-func apply(op func(int, int) int, a, b int) int {
-	p := reflect.ValueOf(op).Pointer()
-	opName := runtime.FuncForPC(p).Name()
-	fmt.Printf("Calling function %s with args"+"(%d, %d)\n", opName, a, b)
-	return op(a, b)
-}
-
-func pow(a, b int) int {
-	return int(math.Pow(float64(a), float64(b)))
-}
-
-// ...表示可以传任意个参数
-func sum(numbers ...int) int {
-	s := 0
-	for i := range numbers {
-		s += numbers[i]
-	}
-	return s
-}
-
-func main() {
-	fmt.Println(eval(3, 4, "*"))
-
-	fmt.Println(div1(13, 3))
-
-	q, r := div2(14, 3)
-	_, s := div2(15, 3) // 不想接收的值可以使用占位符替代
-	fmt.Println(q, r, s)
-
-	fmt.Println(eval2(3, 4, "x"))
-
-	fmt.Println(apply(pow, 3, 4))
-
-	fmt.Println(apply(
-		func(a int, b int) int {
-			return int(math.Pow(float64(a), float64(b)))
-		}, 3, 5))
-
-	fmt.Println(sum(1, 2, 3, 4, 5))
-}
-
-/*
-总结：
-	1. 函数可以返回多个值
-	2. 函数返回多个值时可以起名字，这仅用于非常简单的函数，且对于调用者而言没有区别，仅仅起提示作用
-	3. 函数中可以传入可变参数列表
-	4. 返回值类型写在最后面
-	5. 函数可以作为参数
-	6. 没有默认参数、可选参数
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	1. go语言仅支持封装，不支持继承和多态
+	2. go语言没有class，只有struct
+	3. go语言的结构定义在堆上还是栈上？
+		* 其实不需要知道，系统会根据需求自动分配，Go语言有变量（垃圾）回收器
+	4. 只有使用指针才可以改变结构内容
+	5. nil指针也可以调用方法
+	6. 值接收值 vs 指针接收者
+		6.1 要改变内容必须使用指针接收者
+		6.2 结构过大也考虑使用指针接收者
+		6.3 一致性：如有指针接收者，最好都是指针接收者
+		** 值接收者是go语言特有的
+		** 值/指针接收者均可接收值/指针
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">12
-4 1
-4 2 0
-0 unsupported operator:x
-Calling function main.pow with args(3, 4)  // 第一个mian表示main包名，第二个pow表示pow函数
-81
-Calling function main.main.func1 with args(3, 5)  // 第一个main表示main包名，第二个main表示main函数名，第三个func1表示未知的函数名
-243
-15<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">{0 &lt;nil&gt; &lt;nil&gt;}
+0
+2
+3
+0
+5
+[{3 &lt;nil&gt; &lt;nil&gt;} {0 &lt;nil&gt; &lt;nil&gt;} {6 &lt;nil&gt; 0xc0000a4018}]
+3
+0
+4
+3
+100
+Setting value to nil node. Ignored.
+300<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+<h4 id="包和封装"><a href="#包和封装" class="headerlink" title="包和封装"></a>包和封装</h4><p>路径：</p>
+<p><img src="/../images/image-20211204183913639.png"></p>
+<p><code>node.go</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package tree
 
 import "fmt"
 
-// 值传递，不改变原来的值
-func swap1(a, b int) {
-	b, a = a, b
+type Node struct {
+	Value       int
+	Left, Right *Node
 }
 
-// 地址传递
-func swap2(a, b *int) {
-	*b, *a = *a, *b
+func (node Node) Print() {
+	fmt.Println(node.Value, " ")
 }
 
-// 直接通过return实现交换
-func swap3(a, b int) (int, int) {
-	return b, a
+func (node *Node) SetValue(value int) {
+	if node == nil {
+		fmt.Println("Setting value to nil node. Ignored.")
+		return
+	}
+	node.Value = value
+}
+
+// 自定义创建结构体的工厂函数
+func CreateNode(value int) *Node {
+	return &amp;Node{Value: value} // 在Go语言中可以返回局部变量的地址
+}
+
+// 结构体遍历
+// 左 - 中 - 右
+func (node *Node) Traverse() {
+	if node == nil {
+		return
+	}
+	node.Left.Traverse()  //左
+	node.Print()          // 中
+	node.Right.Traverse() // 右
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>entry.go</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import (
+	"fmt"
+	"golearn/muke_go/tree"
+)
+
+type myTreeNode struct {
+	node *tree.Node
+}
+
+// 通过别名
+// 左 - 右 - 中
+func (myNode *myTreeNode) postOrder() {
+	if myNode == nil || myNode.node == nil {
+		return
+	}
+	left := myTreeNode{myNode.node.Left}
+	left.postOrder() // 左
+	right := myTreeNode{myNode.node.Right}
+	right.postOrder()   // 右
+	myNode.node.Print() // 中
 }
 
 func main() {
-	a, b := 3, 4
-	swap1(a, b)
-	fmt.Println(a, b)
-	swap2(&amp;a, &amp;b)
-	fmt.Println(a, b)
-	c, d := 1, 2
-	c, d = swap3(c, d)
-	fmt.Println(c, d)
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	// 创建一个结构体，不进行初始化
+	var root = tree.Node{Value: 3}
+	root.Left = &amp;tree.Node{}
+	root.Right = &amp;tree.Node{5, nil, nil}
+	root.Right.Left = new(tree.Node)
+	root.Left.Right = tree.CreateNode(2)
+
+	root.Traverse()
+
+	fmt.Println()
+	myRoot := myTreeNode{&amp;root}
+	myRoot.postOrder()
+}
+
+/*
+总结：
+	1. 变量命名：
+		1.1 名字一般使用CamelCase
+		1.2 首字母大写：public
+		1.3 首字母小写：private
+			** public和private都是针对包来说的
+	2. 每个目录一个包
+	3. main包包含可执行入口
+	4. 为结构定义的方法必须放在同一个包内，可以是不同文件
+	5. 如何扩充系统类型或者别人的类型？
+		5.1 定义别名
+		5.2 使用组合
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">3 4
-4 3
-2 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">0  
+2  
+3  
+0  
+5  
 
+2  
+0  
+0  
+5  
+3 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="GOPATH以及目录结构"><a href="#GOPATH以及目录结构" class="headerlink" title="GOPATH以及目录结构"></a>GOPATH以及目录结构</h4><h6 id="GOPATH环境变量"><a href="#GOPATH环境变量" class="headerlink" title="GOPATH环境变量"></a>GOPATH环境变量</h6><ul>
+<li>  默认在<code>~/go</code>(unix,linux),<code>%USERPROFILE%\go</code>(windows)</li>
+<li>  官方推荐：所有项目和第三方库都放在同一个GOPATH下</li>
+<li>  也可以将每个项目放在不同的GOPATH下</li>
+<li>  <code>go get</code>获取第三方库</li>
+<li>  使用<code>gopm</code>来获取无法下载的包</li>
+<li>  <code>go build</code>编译</li>
+<li>  <code>go install</code>产生<code>pkg</code>文件和可执行文件</li>
+<li>  <code>go run</code>直接编译运行</li>
+</ul>
+<h6 id="GOPATH下目录结构"><a href="#GOPATH下目录结构" class="headerlink" title="GOPATH下目录结构"></a>GOPATH下目录结构</h6><ul>
+<li><code>src</code><ul>
+<li>  <code>git repository1</code></li>
+<li>  <code>git repository2</code></li>
+</ul>
+</li>
+<li><code>pkg</code><ul>
+<li>  <code>git repository1</code></li>
+<li>  <code>git repository2</code></li>
+</ul>
+</li>
+<li><code>bin</code><ul>
+<li>  执行文件1，2，3…</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -1016,7 +775,7 @@ func main() {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/12/02/01%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">http://example.com/2021/12/02/01%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</a>
+                    <a href="http://example.com/2021/12/04/03%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/">http://example.com/2021/12/04/03%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1234,7 +993,7 @@ func main() {
         repo: '',
         owner: '',
         admin: null,
-        id: '2021-12-02T15-30-00',
+        id: '2021-12-04T18-30-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -1258,7 +1017,7 @@ func main() {
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Thu Dec 02 2021 15:30:00 GMT+0800',
+    id: 'Sat Dec 04 2021 18:30:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -1283,9 +1042,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://example.com/2021/12/02/01%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/';
-        this.page.identifier = '/2021/12/02/01%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/';
-        this.page.title = '01基础语法';
+        this.page.url = 'http://example.com/2021/12/04/03%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/';
+        this.page.identifier = '/2021/12/04/03%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/';
+        this.page.title = '03面对对象';
     };
     let disqus_shortname = '';
 
@@ -1341,13 +1100,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/12/03/02%E5%AE%B9%E5%99%A8/">
+                <a href="/2021/12/04/04%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="02容器">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="04面对接口">
                         
-                        <span class="card-title">02容器</span>
+                        <span class="card-title">04面对接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1358,7 +1117,7 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-04
                         </span>
                         <span class="publish-author">
                             
@@ -1398,13 +1157,13 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/30/03Implement-strStr/">
+                <a href="/2021/12/03/02%E5%AE%B9%E5%99%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="03Implement strStr">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="02容器">
                         
-                        <span class="card-title">03Implement strStr</span>
+                        <span class="card-title">02容器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1415,14 +1174,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/" class="post-category">
-                                    九章算法
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    慕课Go语言
                                 </a>
                             
                             
@@ -1432,12 +1191,16 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/Go%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">Go语言</span>
                     </a>
                     
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">基础语法</span>
                     </a>
                     
                 </div>

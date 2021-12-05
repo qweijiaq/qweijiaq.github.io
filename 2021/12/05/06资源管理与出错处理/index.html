@@ -4,9 +4,20 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="01线性回归, 永不退场的闯关族">
-    <meta name="description" content="有$n$组数据$(x_1,y_1),(x_2,y_2),…,(x_n,y_n)$，其中$x=(x_1,x_2,…,x_n)$为输入，$y=(y_1,y_2,…,y_n)$为对应的真实输出值。
-一元一次线性回归即输入变量$x$只有一个特征，且">
+    <meta name="keywords" content="06资源管理与出错处理, 永不退场的闯关族">
+    <meta name="description" content="defer指令package main
+
+import (
+	&#34;bufio&#34;
+	&#34;fmt&#34;
+	&#34;io&#34;
+	&#34;os&#34;
+	&#34;strings&#34;
+)
+
+func tryDefer1() {
+	defer fmt.Println(1)
+	defer ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +29,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>01线性回归 | 永不退场的闯关族</title>
+    <title>06资源管理与出错处理 | 永不退场的闯关族</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -312,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">01线性回归</h1>
+                    <h1 class="description center-align post-title">06资源管理与出错处理</h1>
                 </div>
             </div>
         </div>
@@ -433,12 +444,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%89%8B%E6%8E%A8%E5%85%AC%E5%BC%8F/">
-                                <span class="chip bg-color">手推公式</span>
+                            <a href="/tags/Go%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">Go语言</span>
                             </a>
                         
-                            <a href="/tags/%E5%9B%9E%E5%BD%92/">
-                                <span class="chip bg-color">回归</span>
+                            <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                <span class="chip bg-color">编程</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                                <span class="chip bg-color">基础语法</span>
                             </a>
                         
                     </div>
@@ -449,8 +464,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                机器学习
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
+                                慕课Go语言
                             </a>
                         
                     </div>
@@ -462,7 +477,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-11-29
+                    2021-12-05
                 </div>
                 
 
@@ -486,83 +501,224 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>有$n$组数据$(x_1,y_1),(x_2,y_2),…,(x_n,y_n)$，其中$x=(x_1,x_2,…,x_n)$为输入，$y=(y_1,y_2,…,y_n)$为对应的真实输出值。</p>
-<h4 id="一元一次线性回归"><a href="#一元一次线性回归" class="headerlink" title="一元一次线性回归"></a>一元一次线性回归</h4><p>即输入变量$x$只有一个特征，且只与一次相关。<br>我们的目标是拟合出一条直线：</p>
-<script type="math/tex; mode=display">
-f_{\theta}(x)=\theta_0+\theta_1x</script><p>让向量$x$中的每一个预测输出值$f_{\theta}(x_i)$尽可能的接近真实的输出值$y_i$，此时对应的目标（损失）函数为：</p>
-<script type="math/tex; mode=display">
-E(\theta)=\dfrac{1}{2}\sum_{i=1}^n(y_i-f_{\theta}(x_i))^2=\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2</script><p>从理论上讲，我们本该定义的目标函数或者说损失函数为：</p>
-<script type="math/tex; mode=display">
-E(\theta)=\sum_{i=1}^n(y_i-f_{\theta}(x_i))</script><p>但是这是行不通的，因为假设函数在$x_i$处的误差是大于0的，而在$x_{i+1}$处的误差是小于0的，二者原本存在的误差反而正负相抵了，这显然不符合我们的期待。<br>那么可以使用绝对值吗？理论上确实是可行的，但是我们后面要对目标函数进行微分，而绝对值在某些尖点处是不可导的，故一般不使用，通常使用更加平滑的平方。至于为什么在前面加上$\dfrac{1}{2}$，当然也是为了更加便于后面的求导。<br>现在一切的问题转化为了求解使目标函数值最小的$\theta_0$和$\theta_1$（最优解），即：</p>
-<script type="math/tex; mode=display">
-(\theta_0^*,\theta_1^*)=\arg \min_{(\theta_0,\theta_1)}E(\theta)=\arg \min_{(\theta_0,\theta_1)}\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2</script><p>如何求得最优解呢？</p>
-<ol>
-<li>直接求导<br>这里的$E(\theta)$是一个简单的凸函数，可以通过求导得到全局最优解。<script type="math/tex; mode=display">
-\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_0}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-1)=n\theta_0-\sum_{i=1}^n(y_i-\theta_1x_i)=0</script><script type="math/tex; mode=display">
-\Rightarrow \theta_0 = \dfrac{1}{n}\sum_{i=1}^n(y_i-\theta_1x_i)=\bar{y}-\theta_1\bar{x}</script><blockquote>
-<p> $\bar{y}=\dfrac{1}{n}\sum_{i=1}^ny_i$<br> $\bar{x}=\dfrac{1}{n}\sum_{i=1}^nx_i$</p>
-</blockquote>
-</li>
-</ol>
-<script type="math/tex; mode=display">
-\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_1}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-x_i)=\theta_1\sum_{i=1}^n{x_i}^2-\sum_{i=1}^n(y_i-\theta_0)x_i=0</script><script type="math/tex; mode=display">
-\Rightarrow \theta_1\sum_{i=1}^n{x_i}^2=\sum_{i=1}^n(y_i-\theta_0)x_i=\sum_{i=1}^n(y_i-\bar{y}+\theta_1\bar{x})x_i</script><script type="math/tex; mode=display">
-\Rightarrow\theta_1=\dfrac{\sum_{i=1}^ny_ix_i-\sum_{i=1}^n\bar{y}x_i}{\sum_{i=1}^nx_i^2-\sum_{i=1}^nx_i\bar{x}}=\dfrac{\sum_{i=1}^ny_ix_i-\dfrac{1}{n}\sum_{i=1}^ny_ix_i}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}\sum_{i=1}^nx_i\sum_{i=1}^nx_i}=\dfrac{\sum_{i=1}^ny_i(x-\bar{x})}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}(\sum_{i=1}^nx_i)^2}</script><blockquote>
-<p> 可以将$\theta_1$向量化，方便使用Python实现：<br>$\theta_1=\dfrac{\sum_{i=1}^ny_i(x_i-\bar{x})}{\sum_{i=1}^nx_i(x_i-\bar{x})}=\dfrac{\sum_{i=1}^n(y_ix_i-y_i\bar{x}-x_i\bar{y}+\bar{x}\bar{y})}{\sum_{i=1}^n(x_i^2-x_i\bar{x}-x_i\bar{x}+\bar{x}^2)}=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}$<br>这样$\theta_1$可直接由向量$x_i-\bar{x}$和$y_i-\bar{y}$表示。<br>其中$\sum_{i=1}^nx_i\bar{y}=\sum_{i=1}^n\bar{x}\bar{y}$，$\sum_{i=1}^nx_i\bar{x}=\sum_{i=1}^n(\bar{x})^2$</p>
-</blockquote>
-<ol>
-<li>梯度下降法<br>不断沿着梯度的反方向迭代更新参数，直到得到最优解。<br>先随机取一组初始参数$\theta_0^{(0)},\theta_1^{(0)}$，然后通过下面的式子进行迭代更新：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i</script><h4 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h4>即输入变量$x$只有一个特征，但与$x$的$n(n&gt;1)$次相关。<br>有些数据无法用简单的一次线性函数拟合，必须使用一元高次曲线函数来拟合。<script type="math/tex; mode=display">
-f_{\theta}(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3+\cdots+\theta_nx^n</script>使用梯度下降法求最优解的迭代公式为：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i</script><script type="math/tex; mode=display">
-\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^2</script>……<script type="math/tex; mode=display">
-\theta_n := \theta_n-\eta\dfrac{\partial E}{\partial \theta_n}= \theta_n-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^n</script><blockquote>
-<p> 多项式回归由于模型较为复杂，所以容易出现过拟合现象。</p>
-<h4 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h4><p>即输入变量$x$只有$d$个特征，只与一次相关。<br>对于其中某一个输入$x_i$，有$x_i=(x_i^{(1)},x_i^{(2)},\cdots,x_i^{(d)})$</p>
-<script type="math/tex; mode=display">
-f_{\theta}(x^{(1)},x^{(2)},\cdots,x^{(d)})=\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)}</script><script type="math/tex; mode=display">
-令\theta^T=[\theta_0,\theta_1,\theta_2,\cdots,\theta_d],x^T=[1,x^{(1)},x^{(2)},\cdots,x^{(d)}],则 f_{\theta}(x)=\theta^Tx</script><p>以上的式子是仅仅针对一个输入$x$进行分析，此时有：</p>
-<script type="math/tex; mode=display">
-\dfrac{\partial f_{\theta}(x)}{\partial\theta_j}=\dfrac{\partial (\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)})}{\partial\theta_j}=x^{(j)}</script></blockquote>
-</li>
-<li>梯度下降法<br>对$n$个输入使用梯度下降法求最优解的迭代公式为：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(1)}</script><script type="math/tex; mode=display">
-\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(2)}</script>……<script type="math/tex; mode=display">
-\theta_d := \theta_d-\eta\dfrac{\partial E}{\partial \theta_d}= \theta_d-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(d)}</script></li>
-<li>直接求导法<script type="math/tex; mode=display">
-令 X = 
-\begin{bmatrix}
-1 & x_{11}      & x_{12}      & \cdots & x_{1d}      \\\\
-1 & x_{21}      & x_{22}      & \cdots & x_{2d}      \\\\
-\vdots & \vdots & \vdots & \ddots & \vdots \\\\
-1 & x_{n1}      & x_{n2}      & \cdots & x_{nd}      \\\\
-\end{bmatrix},
-\theta =
-\begin{bmatrix}
-\theta_0  \\\\
-\theta_1 \\\\
-\vdots \\\\
-\theta_d \\\\
-\end{bmatrix}
-,则 y=X\theta</script>此时目标函数为：<script type="math/tex; mode=display">
-E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<script type="math/tex; mode=display">
-\theta^*=\arg\min_{\theta}E(\theta)</script>目标函数对$\theta$求导：<script type="math/tex; mode=display">
-\begin{aligned}
-\dfrac{\partial E(\theta)}{\partial\theta}
-&=\dfrac{\partial (y^T-\theta^TX^T)(y-X\theta)}{\partial\theta}\\\\
-&=\dfrac{\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)}{\partial\theta}\\\\
-&=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\\\\
-&=2X^T(X\theta-y)\\\\
-\dfrac{\partial E(\theta)}{\partial\theta}=0 \Rightarrow \theta^*=(X^TX)^{-1}X^Ty
-\end{aligned}</script></li>
-</ol>
-<blockquote>
-<p> $\dfrac{\partial a^Tx}{\partial x}=\dfrac{\partial x^Ta}{\partial x}=a$<br>$\dfrac{\partial x^Tax}{\partial x}=(a+a^T)x$</p>
-</blockquote>
-<p>上述推导默认$X^TX$是可逆的，当$X^TX$不可逆时考虑使用正则化，不过这种情况十分少见。</p>
+                <h4 id="defer指令"><a href="#defer指令" class="headerlink" title="defer指令"></a>defer指令</h4><pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import (
+	"bufio"
+	"fmt"
+	"io"
+	"os"
+	"strings"
+)
+
+func tryDefer1() {
+	defer fmt.Println(1)
+	defer fmt.Println(2)
+	fmt.Println(3)
+}
+
+/*
+func tryDefer2() {
+	for i := 0; i &lt; 100; i++ {
+		defer fmt.Println(i)
+		if i == 10 {
+			panic("printed too many")
+		}
+	}
+}
+*/
+
+type intGen func() int
+
+func (g intGen) Read(p []byte) (n int, e error) {
+	next := g()
+	if next &gt; 10000 {
+		return 0, io.EOF
+	}
+	s := fmt.Sprintf("%d\n", next)
+	// TODO: incorrect if p is too small!!!
+	return strings.NewReader(s).Read(p)
+}
+
+func fibonacci() intGen {
+	a, b := 0, 1
+	return func() int {
+		a, b = b, a+b
+		return a
+	}
+}
+
+func writeFile1(filename string) {
+	file, err := os.Create(filename)
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	f := fibonacci()
+	for i := 0; i &lt; 20; i++ {
+		fmt.Fprintln(writer, f())
+	}
+}
+
+// 出错处理
+func writeFile2(filename string) {
+	file, err := os.OpenFile(filename, os.O_EXCL|os.O_CREATE, 0666)
+	if err != nil {
+		if pathError, ok := err.(*os.PathError); !ok {
+			panic(err)
+		} else {
+			fmt.Println(pathError.Op, pathError.Path, pathError.Err)
+		}
+		return
+	}
+	defer file.Close()
+
+	writer := bufio.NewWriter(file)
+	defer writer.Flush()
+
+	f := fibonacci()
+	for i := 0; i &lt; 20; i++ {
+		fmt.Fprintln(writer, f())
+	}
+}
+
+func main() {
+	tryDefer1()
+	// tryDefer2()
+	writeFile1("fib.txt")
+	writeFile2("fib.txt")
+}
+
+/*
+总结：
+	1. 确保调用在函数结束时发生
+	2. 参数在defer语句时计算
+	3. defer列表为后进先出（栈上）
+	4. 何时使用defer调用
+		4.1 Open/Close
+		4.2 Lock/Unlock
+		4.3 PrintHeader/PrintFooter
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">3
+2
+1
+open fib.txt file exists<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="服务器统一出错处理"><a href="#服务器统一出错处理" class="headerlink" title="服务器统一出错处理"></a>服务器统一出错处理</h4><p>文件结构：</p>
+<p><img src="/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/images/image-20211205150954751.png" alt="image-20211205150954751"></p>
+<p><code>handler.go</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package filelisting
+
+import (
+	"io/ioutil"
+	"net/http"
+	"os"
+)
+
+func HandleFileList(writer http.ResponseWriter, request *http.Request) error {
+	path := request.URL.Path[len("/list/"):]
+	file, err := os.Open(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+	all, err := ioutil.ReadAll(file)
+	if err != nil {
+		return err
+	}
+	writer.Write(all)
+	return nil
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><code>web.go</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import (
+	"log"
+	"net/http"
+	"os"
+
+	"imooc.com/errhandling/filelistingserver/filelisting"
+)
+
+type appHandler func(writer http.ResponseWriter, request *http.Request) error
+
+func errWrapper(handler appHandler) func(http.ResponseWriter, *http.Request) {
+	return func(writer http.ResponseWriter, request *http.Request) {
+		err := handler(writer, request)
+		if err != nil {
+			log.Println("Error handling request: %s", err.Error())
+			code := http.StatusOK
+			switch {
+			case os.IsNotExist(err):
+				code = http.StatusNotFound
+			case os.IsPermission(err):
+				code = http.StatusForbidden
+			default:
+				code = http.StatusInternalServerError
+			}
+			http.Error(writer, http.StatusText(code), code)
+		}
+	}
+}
+
+func main() {
+	http.HandleFunc("/list/", errWrapper(filelisting.HandleFileList))
+	err := http.ListenAndServe(":8888", nil)
+	if err != nil {
+		panic(err)
+	}
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="panic和recover"><a href="#panic和recover" class="headerlink" title="panic和recover"></a>panic和recover</h4><h6 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h6><ul>
+<li>停止当前函数执行</li>
+<li>一直向上返回，执行每一层的<code>defer</code></li>
+<li>如果没有遇见<code>recover</code>，程序退出</li>
+</ul>
+<h6 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h6><ul>
+<li>仅在<code>defer</code>调用的值</li>
+<li>获取<code>panic</code>的值</li>
+<li>如果无法处理，可重新<code>panic</code></li>
+</ul>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import (
+	"fmt"
+)
+
+func tryRecover() {
+	defer func() {
+		r := recover()
+		if err, ok := r.(error); ok {
+			fmt.Println("Error occurred: ", err)
+		} else {
+			panic(fmt.Sprintf("I don't know what to do: %v", r))
+		}
+	}()
+	// panic(errors.New("this is an error"))
+	//
+	panic(123)
+}
+
+func main() {
+	tryRecover()
+}
+
+/*
+总结：
+	1. error vs. panic
+		1.1 意料之中的：使用error，如文件打不开
+		1.2 意料之外的：使用panic，如数组越界
+	2. 错误处理综合实例
+		2.1 defer + panic + recover
+		2.2 Type Assertion
+		2.3 函数式编程的应用
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>运行结果：</p>
+<pre class="line-numbers language-none"><code class="language-none">Error occurred:  this is an error<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -589,7 +745,7 @@ E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">http://example.com/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/</a>
+                    <a href="http://example.com/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/">http://example.com/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -627,12 +783,16 @@ E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%89%8B%E6%8E%A8%E5%85%AC%E5%BC%8F/">
-                                    <span class="chip bg-color">手推公式</span>
+                                <a href="/tags/Go%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">Go语言</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9B%9E%E5%BD%92/">
-                                    <span class="chip bg-color">回归</span>
+                                <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                                    <span class="chip bg-color">编程</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                                    <span class="chip bg-color">基础语法</span>
                                 </a>
                             
                         </div>
@@ -803,7 +963,7 @@ E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得�
         repo: '',
         owner: '',
         admin: null,
-        id: '2021-11-29T17-23-00',
+        id: '2021-12-05T17-30-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -827,7 +987,7 @@ E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得�
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Mon Nov 29 2021 17:23:00 GMT+0800',
+    id: 'Sun Dec 05 2021 17:30:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -852,9 +1012,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://example.com/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/';
-        this.page.identifier = '/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/';
-        this.page.title = '01线性回归';
+        this.page.url = 'http://example.com/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/';
+        this.page.identifier = '/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/';
+        this.page.title = '06资源管理与出错处理';
     };
     let disqus_shortname = '';
 
@@ -906,70 +1066,18 @@ gitment.render('gitment-content');
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/11/30/01%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%80%9F%E6%88%90%E6%8A%80%E5%B7%A7/">
+                <a href="/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="01算法面试速成技巧">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="06资源管理与出错处理">
                         
-                        <span class="card-title">01算法面试速成技巧</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-30
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E4%B9%9D%E7%AB%A0%E7%AE%97%E6%B3%95/" class="post-category">
-                                    九章算法
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9D%A2%E8%AF%95/">
-                        <span class="chip bg-color">面试</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/29/01%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="01线性回归">
-                        
-                        <span class="card-title">01线性回归</span>
+                        <span class="card-title">06资源管理与出错处理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -980,14 +1088,14 @@ gitment.render('gitment-content');
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    机器学习
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    慕课Go语言
                                 </a>
                             
                             
@@ -998,12 +1106,73 @@ gitment.render('gitment-content');
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%89%8B%E6%8E%A8%E5%85%AC%E5%BC%8F/">
-                        <span class="chip bg-color">手推公式</span>
+                    <a href="/tags/Go%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">Go语言</span>
                     </a>
                     
-                    <a href="/tags/%E5%9B%9E%E5%BD%92/">
-                        <span class="chip bg-color">回归</span>
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">基础语法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="05函数式编程">
+                        
+                        <span class="card-title">05函数式编程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    慕课Go语言
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Go%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">Go语言</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E7%A8%8B/">
+                        <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">基础语法</span>
                     </a>
                     
                 </div>

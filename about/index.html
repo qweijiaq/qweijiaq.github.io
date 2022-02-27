@@ -371,21 +371,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">10</a></span>
+    <span class="count"><a href="/">12</a></span>
     <span class="name">Posts</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">3</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">Categories</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">7</a></span>
+    <span class="count"><a href="/tags">9</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -401,21 +401,21 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">10</a></span>
+    <span class="count"><a href="/">12</a></span>
     <span class="name">Posts</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">3</a></span>
+    <span class="count"><a href="/categories">4</a></span>
     <span class="name">Categories</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">7</a></span>
+    <span class="count"><a href="/tags">9</a></span>
     <span class="name">Tags</span>
 </div>
 
@@ -541,7 +541,7 @@
         },
         xAxis: {
             type: 'category',
-            data: ["2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12"]
+            data: ["2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02"]
         },
         yAxis: {
             type: 'value',
@@ -551,7 +551,7 @@
                 name: 'Number of posts',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,4,6],
+                data: [0,0,0,0,0,0,0,0,0,4,7,0,1],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -593,7 +593,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"慕课Go语言","value":6},{"name":"九章算法","value":3},{"name":"机器学习","value":1}],
+                data: [{"name":"慕课Go语言","value":6},{"name":"九章算法","value":3},{"name":"机器学习","value":1},{"name":"CSDN课程","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -617,7 +617,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Go语言","编程","基础语法","算法","面试","手推公式","回归"]
+                data: ["Go语言","编程","基础语法","算法","面试","手推公式","回归","前端","HTML"]
             }
         ],
         yAxis: [
@@ -630,7 +630,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [6,6,6,3,3,1,1],
+                data: [6,6,6,3,3,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -841,6 +841,18 @@
             </a>
             
             
+            
+            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                <span class="chip center-align waves-effect waves-light chip-default">前端</span>
+            </a>
+            
+            
+            
+            <a href="/tags/HTML/">
+                <span class="chip center-align waves-effect waves-light chip-default">HTML</span>
+            </a>
+            
+            
         </div>
     </div>
     
@@ -963,7 +975,7 @@
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021</span>
+                <span id="year">2021-2022</span>
             
             <a href="/about" target="_blank">卫佳 CQUer</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -1208,24 +1220,9 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
     
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>

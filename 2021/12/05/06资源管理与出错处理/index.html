@@ -603,13 +603,15 @@ func main() {
 		4.2 Lock/Unlock
 		4.3 PrintHeader/PrintFooter
 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>运行结果：</p>
 <pre class="line-numbers language-none"><code class="language-none">3
 2
 1
 open fib.txt file exists<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="服务器统一出错处理"><a href="#服务器统一出错处理" class="headerlink" title="服务器统一出错处理"></a>服务器统一出错处理</h4><p>文件结构：</p>
-<p><img src="/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/images/image-20211205150954751.png" alt="image-20211205150954751"></p>
+<p><img src="/../images/image-20211205150954751.png" alt="image-20211205150954751"></p>
 <p><code>handler.go</code>代码：</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">package filelisting
 
@@ -634,6 +636,7 @@ func HandleFileList(writer http.ResponseWriter, request *http.Request) error {
 	writer.Write(all)
 	return nil
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>web.go</code>代码：</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
 
@@ -673,15 +676,16 @@ func main() {
 		panic(err)
 	}
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="panic和recover"><a href="#panic和recover" class="headerlink" title="panic和recover"></a>panic和recover</h4><h6 id="panic"><a href="#panic" class="headerlink" title="panic"></a>panic</h6><ul>
-<li>停止当前函数执行</li>
-<li>一直向上返回，执行每一层的<code>defer</code></li>
-<li>如果没有遇见<code>recover</code>，程序退出</li>
+<li>  停止当前函数执行</li>
+<li>  一直向上返回，执行每一层的<code>defer</code></li>
+<li>  如果没有遇见<code>recover</code>，程序退出</li>
 </ul>
 <h6 id="recover"><a href="#recover" class="headerlink" title="recover"></a>recover</h6><ul>
-<li>仅在<code>defer</code>调用的值</li>
-<li>获取<code>panic</code>的值</li>
-<li>如果无法处理，可重新<code>panic</code></li>
+<li>  仅在<code>defer</code>调用的值</li>
+<li>  获取<code>panic</code>的值</li>
+<li>  如果无法处理，可重新<code>panic</code></li>
 </ul>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
 
@@ -717,8 +721,10 @@ func main() {
 		2.2 Type Assertion
 		2.3 函数式编程的应用
 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>运行结果：</p>
 <pre class="line-numbers language-none"><code class="language-none">Error occurred:  this is an error<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1607,9 +1613,24 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>

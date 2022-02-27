@@ -598,6 +598,7 @@ func main() {
 		** 值接收者是go语言特有的
 		** 值/指针接收者均可接收值/指针
 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>运行结果：</p>
 <pre class="line-numbers language-none"><code class="language-none">{0 &lt;nil&gt; &lt;nil&gt;}
 0
@@ -613,8 +614,9 @@ func main() {
 100
 Setting value to nil node. Ignored.
 300<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="包和封装"><a href="#包和封装" class="headerlink" title="包和封装"></a>包和封装</h4><p>路径：</p>
-<p><img src="/2021/12/04/03%E9%9D%A2%E5%AF%B9%E5%AF%B9%E8%B1%A1/images/image-20211204183913639.png" alt></p>
+<p><img src="/../images/image-20211204183913639.png"></p>
 <p><code>node.go</code>代码：</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">package tree
 
@@ -652,6 +654,7 @@ func (node *Node) Traverse() {
 	node.Print()          // 中
 	node.Right.Traverse() // 右
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><code>entry.go</code>代码：</p>
 <pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
 
@@ -706,6 +709,7 @@ func main() {
 		5.1 定义别名
 		5.2 使用组合
 */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>运行结果：</p>
 <pre class="line-numbers language-none"><code class="language-none">0  
 2  
@@ -718,29 +722,30 @@ func main() {
 0  
 5  
 3 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="GOPATH以及目录结构"><a href="#GOPATH以及目录结构" class="headerlink" title="GOPATH以及目录结构"></a>GOPATH以及目录结构</h4><h6 id="GOPATH环境变量"><a href="#GOPATH环境变量" class="headerlink" title="GOPATH环境变量"></a>GOPATH环境变量</h6><ul>
-<li>默认在<code>~/go</code>(unix,linux),<code>%USERPROFILE%\go</code>(windows)</li>
-<li>官方推荐：所有项目和第三方库都放在同一个GOPATH下</li>
-<li>也可以将每个项目放在不同的GOPATH下</li>
-<li><code>go get</code>获取第三方库</li>
-<li>使用<code>gopm</code>来获取无法下载的包</li>
-<li><code>go build</code>编译</li>
-<li><code>go install</code>产生<code>pkg</code>文件和可执行文件</li>
-<li><code>go run</code>直接编译运行</li>
+<li>  默认在<code>~/go</code>(unix,linux),<code>%USERPROFILE%\go</code>(windows)</li>
+<li>  官方推荐：所有项目和第三方库都放在同一个GOPATH下</li>
+<li>  也可以将每个项目放在不同的GOPATH下</li>
+<li>  <code>go get</code>获取第三方库</li>
+<li>  使用<code>gopm</code>来获取无法下载的包</li>
+<li>  <code>go build</code>编译</li>
+<li>  <code>go install</code>产生<code>pkg</code>文件和可执行文件</li>
+<li>  <code>go run</code>直接编译运行</li>
 </ul>
 <h6 id="GOPATH下目录结构"><a href="#GOPATH下目录结构" class="headerlink" title="GOPATH下目录结构"></a>GOPATH下目录结构</h6><ul>
 <li><code>src</code><ul>
-<li><code>git repository1</code></li>
-<li><code>git repository2</code></li>
+<li>  <code>git repository1</code></li>
+<li>  <code>git repository2</code></li>
 </ul>
 </li>
 <li><code>pkg</code><ul>
-<li><code>git repository1</code></li>
-<li><code>git repository2</code></li>
+<li>  <code>git repository1</code></li>
+<li>  <code>git repository2</code></li>
 </ul>
 </li>
 <li><code>bin</code><ul>
-<li>执行文件1，2，3…</li>
+<li>  执行文件1，2，3…</li>
 </ul>
 </li>
 </ul>
@@ -1652,9 +1657,24 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>

@@ -508,11 +508,12 @@ class Solution:
             if source[i: i + len(target)] == target:
                 return i
         return -1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>上述代码可以优化的地方：</p>
 <ul>
-<li>代码<code>source[i: i + len(target)]</code>中采用了切片的思想，理论上解决该题不能使用<code>substring</code>的操作</li>
-<li>切片的使用带来了空间的浪费</li>
-<li>代码<code>i + len(target)</code>很可能会越界，当然在Python中不会报错，但是在其他语言中可能会报错</li>
+<li>  代码<code>source[i: i + len(target)]</code>中采用了切片的思想，理论上解决该题不能使用<code>substring</code>的操作</li>
+<li>  切片的使用带来了空间的浪费</li>
+<li>  代码<code>i + len(target)</code>很可能会越界，当然在Python中不会报错，但是在其他语言中可能会报错</li>
 </ul>
 <p>优化上面的代码，使时间复杂度为$O(n^2)$：</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
@@ -531,6 +532,7 @@ class Solution:
             else:
                 return i
         return -1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>如果面试官真的问你一个比$O(n^2)$复杂度更低的算法（虽然这种可能性非常低），可以学习一个比KMP算法更简单的算法：Rabin-Karp。</p>
 <p>Rabin-Karp算法的思路是将字符串hash成一个数值进行比较。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">def rabin_karp(T, P):
@@ -550,6 +552,9 @@ class Solution:
                     k += 1
             if k == m:
                 print(s)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -1450,9 +1455,24 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>

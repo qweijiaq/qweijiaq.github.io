@@ -487,77 +487,24 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>有$n$组数据$(x_1,y_1),(x_2,y_2),…,(x_n,y_n)$，其中$x=(x_1,x_2,…,x_n)$为输入，$y=(y_1,y_2,…,y_n)$为对应的真实输出值。</p>
-<h4 id="一元一次线性回归"><a href="#一元一次线性回归" class="headerlink" title="一元一次线性回归"></a>一元一次线性回归</h4><p>即输入变量$x$只有一个特征，且只与一次相关。<br>我们的目标是拟合出一条直线：</p>
-<script type="math/tex; mode=display">
-f_{\theta}(x)=\theta_0+\theta_1x</script><p>让向量$x$中的每一个预测输出值$f_{\theta}(x_i)$尽可能的接近真实的输出值$y_i$，此时对应的目标（损失）函数为：</p>
-<script type="math/tex; mode=display">
-E(\theta)=\dfrac{1}{2}\sum_{i=1}^n(y_i-f_{\theta}(x_i))^2=\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2</script><p>从理论上讲，我们本该定义的目标函数或者说损失函数为：</p>
-<script type="math/tex; mode=display">
-E(\theta)=\sum_{i=1}^n(y_i-f_{\theta}(x_i))</script><p>但是这是行不通的，因为假设函数在$x_i$处的误差是大于0的，而在$x_{i+1}$处的误差是小于0的，二者原本存在的误差反而正负相抵了，这显然不符合我们的期待。<br>那么可以使用绝对值吗？理论上确实是可行的，但是我们后面要对目标函数进行微分，而绝对值在某些尖点处是不可导的，故一般不使用，通常使用更加平滑的平方。至于为什么在前面加上$\dfrac{1}{2}$，当然也是为了更加便于后面的求导。<br>现在一切的问题转化为了求解使目标函数值最小的$\theta_0$和$\theta_1$（最优解），即：</p>
-<script type="math/tex; mode=display">
-(\theta_0^*,\theta_1^*)=\arg \min_{(\theta_0,\theta_1)}E(\theta)=\arg \min_{(\theta_0,\theta_1)}\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2</script><p>如何求得最优解呢？</p>
+<h4 id="一元一次线性回归"><a href="#一元一次线性回归" class="headerlink" title="一元一次线性回归"></a>一元一次线性回归</h4><p>即输入变量$x$只有一个特征，且只与一次相关。<br>我们的目标是拟合出一条直线：<br>$$<br>f_{\theta}(x)=\theta_0+\theta_1x<br>$$<br>让向量$x$中的每一个预测输出值$f_{\theta}(x_i)$尽可能的接近真实的输出值$y_i$，此时对应的目标（损失）函数为：<br>$$<br>E(\theta)=\dfrac{1}{2}\sum_{i=1}^n(y_i-f_{\theta}(x_i))^2=\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2<br>$$<br>从理论上讲，我们本该定义的目标函数或者说损失函数为：<br>$$<br>E(\theta)=\sum_{i=1}^n(y_i-f_{\theta}(x_i))<br>$$<br>但是这是行不通的，因为假设函数在$x_i$处的误差是大于0的，而在$x_{i+1}$处的误差是小于0的，二者原本存在的误差反而正负相抵了，这显然不符合我们的期待。<br>那么可以使用绝对值吗？理论上确实是可行的，但是我们后面要对目标函数进行微分，而绝对值在某些尖点处是不可导的，故一般不使用，通常使用更加平滑的平方。至于为什么在前面加上$\dfrac{1}{2}$，当然也是为了更加便于后面的求导。<br>现在一切的问题转化为了求解使目标函数值最小的$\theta_0$和$\theta_1$（最优解），即：<br>$$<br>(\theta_0^*,\theta_1^*)=\arg \min_{(\theta_0,\theta_1)}E(\theta)=\arg \min_{(\theta_0,\theta_1)}\dfrac{1}{2}\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)^2<br>$$<br>如何求得最优解呢？</p>
 <ol>
-<li>直接求导<br>这里的$E(\theta)$是一个简单的凸函数，可以通过求导得到全局最优解。<script type="math/tex; mode=display">
-\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_0}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-1)=n\theta_0-\sum_{i=1}^n(y_i-\theta_1x_i)=0</script><script type="math/tex; mode=display">
-\Rightarrow \theta_0 = \dfrac{1}{n}\sum_{i=1}^n(y_i-\theta_1x_i)=\bar{y}-\theta_1\bar{x}</script><blockquote>
+<li>直接求导<br>这里的$E(\theta)$是一个简单的凸函数，可以通过求导得到全局最优解。<br>$$<br>\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_0}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-1)=n\theta_0-\sum_{i=1}^n(y_i-\theta_1x_i)=0<br>$$<br>$$<br>\Rightarrow \theta_0 = \dfrac{1}{n}\sum_{i=1}^n(y_i-\theta_1x_i)=\bar{y}-\theta_1\bar{x}<br>$$<blockquote>
 <p> $\bar{y}=\dfrac{1}{n}\sum_{i=1}^ny_i$<br> $\bar{x}=\dfrac{1}{n}\sum_{i=1}^nx_i$</p>
 </blockquote>
 </li>
 </ol>
-<script type="math/tex; mode=display">
-\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_1}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-x_i)=\theta_1\sum_{i=1}^n{x_i}^2-\sum_{i=1}^n(y_i-\theta_0)x_i=0</script><script type="math/tex; mode=display">
-\Rightarrow \theta_1\sum_{i=1}^n{x_i}^2=\sum_{i=1}^n(y_i-\theta_0)x_i=\sum_{i=1}^n(y_i-\bar{y}+\theta_1\bar{x})x_i</script><script type="math/tex; mode=display">
-\Rightarrow\theta_1=\dfrac{\sum_{i=1}^ny_ix_i-\sum_{i=1}^n\bar{y}x_i}{\sum_{i=1}^nx_i^2-\sum_{i=1}^nx_i\bar{x}}=\dfrac{\sum_{i=1}^ny_ix_i-\dfrac{1}{n}\sum_{i=1}^ny_ix_i}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}\sum_{i=1}^nx_i\sum_{i=1}^nx_i}=\dfrac{\sum_{i=1}^ny_i(x-\bar{x})}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}(\sum_{i=1}^nx_i)^2}</script><blockquote>
+<p>$$<br>\dfrac{\partial E(\theta_0,\theta_1)}{\partial\theta_1}=\sum_{i=1}^n(y_i-\theta_0-\theta_1x_i)(-x_i)=\theta_1\sum_{i=1}^n{x_i}^2-\sum_{i=1}^n(y_i-\theta_0)x_i=0<br>$$<br>$$<br>\Rightarrow \theta_1\sum_{i=1}^n{x_i}^2=\sum_{i=1}^n(y_i-\theta_0)x_i=\sum_{i=1}^n(y_i-\bar{y}+\theta_1\bar{x})x_i<br>$$<br>$$<br>\Rightarrow\theta_1=\dfrac{\sum_{i=1}^ny_ix_i-\sum_{i=1}^n\bar{y}x_i}{\sum_{i=1}^nx_i^2-\sum_{i=1}^nx_i\bar{x}}=\dfrac{\sum_{i=1}^ny_ix_i-\dfrac{1}{n}\sum_{i=1}^ny_ix_i}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}\sum_{i=1}^nx_i\sum_{i=1}^nx_i}=\dfrac{\sum_{i=1}^ny_i(x-\bar{x})}{\sum_{i=1}^nx_i^2-\dfrac{1}{n}(\sum_{i=1}^nx_i)^2}<br>$$</p>
+<blockquote>
 <p> 可以将$\theta_1$向量化，方便使用Python实现：<br>$\theta_1=\dfrac{\sum_{i=1}^ny_i(x_i-\bar{x})}{\sum_{i=1}^nx_i(x_i-\bar{x})}=\dfrac{\sum_{i=1}^n(y_ix_i-y_i\bar{x}-x_i\bar{y}+\bar{x}\bar{y})}{\sum_{i=1}^n(x_i^2-x_i\bar{x}-x_i\bar{x}+\bar{x}^2)}=\dfrac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}$<br>这样$\theta_1$可直接由向量$x_i-\bar{x}$和$y_i-\bar{y}$表示。<br>其中$\sum_{i=1}^nx_i\bar{y}=\sum_{i=1}^n\bar{x}\bar{y}$，$\sum_{i=1}^nx_i\bar{x}=\sum_{i=1}^n(\bar{x})^2$</p>
 </blockquote>
-<ol>
-<li>梯度下降法<br>不断沿着梯度的反方向迭代更新参数，直到得到最优解。<br>先随机取一组初始参数$\theta_0^{(0)},\theta_1^{(0)}$，然后通过下面的式子进行迭代更新：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i</script><h4 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h4>即输入变量$x$只有一个特征，但与$x$的$n(n&gt;1)$次相关。<br>有些数据无法用简单的一次线性函数拟合，必须使用一元高次曲线函数来拟合。<script type="math/tex; mode=display">
-f_{\theta}(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3+\cdots+\theta_nx^n</script>使用梯度下降法求最优解的迭代公式为：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i</script><script type="math/tex; mode=display">
-\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^2</script>……<script type="math/tex; mode=display">
-\theta_n := \theta_n-\eta\dfrac{\partial E}{\partial \theta_n}= \theta_n-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^n</script><blockquote>
+<ol start="2">
+<li>梯度下降法<br>不断沿着梯度的反方向迭代更新参数，直到得到最优解。<br>先随机取一组初始参数$\theta_0^{(0)},\theta_1^{(0)}$，然后通过下面的式子进行迭代更新：<br>$$<br>\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)<br>$$<br>$$<br>\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i<br>$$<h4 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h4>即输入变量$x$只有一个特征，但与$x$的$n(n&gt;1)$次相关。<br>有些数据无法用简单的一次线性函数拟合，必须使用一元高次曲线函数来拟合。<br>$$<br>f_{\theta}(x)=\theta_0+\theta_1x+\theta_2x^2+\theta_3x^3+\cdots+\theta_nx^n<br>$$<br>使用梯度下降法求最优解的迭代公式为：<br>$$<br>\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)<br>$$<br>$$<br>\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i<br>$$<br>$$<br>\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^2<br>$$<br>……<br>$$<br>\theta_n := \theta_n-\eta\dfrac{\partial E}{\partial \theta_n}= \theta_n-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^n<br>$$<blockquote>
 <p> 多项式回归由于模型较为复杂，所以容易出现过拟合现象。</p>
-<h4 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h4><p>即输入变量$x$只有$d$个特征，只与一次相关。<br>对于其中某一个输入$x_i$，有$x_i=(x_i^{(1)},x_i^{(2)},\cdots,x_i^{(d)})$</p>
-<script type="math/tex; mode=display">
-f_{\theta}(x^{(1)},x^{(2)},\cdots,x^{(d)})=\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)}</script><script type="math/tex; mode=display">
-令\theta^T=[\theta_0,\theta_1,\theta_2,\cdots,\theta_d],x^T=[1,x^{(1)},x^{(2)},\cdots,x^{(d)}],则 f_{\theta}(x)=\theta^Tx</script><p>以上的式子是仅仅针对一个输入$x$进行分析，此时有：</p>
-<script type="math/tex; mode=display">
-\dfrac{\partial f_{\theta}(x)}{\partial\theta_j}=\dfrac{\partial (\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)})}{\partial\theta_j}=x^{(j)}</script></blockquote>
-</li>
-<li>梯度下降法<br>对$n$个输入使用梯度下降法求最优解的迭代公式为：<script type="math/tex; mode=display">
-\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)</script><script type="math/tex; mode=display">
-\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(1)}</script><script type="math/tex; mode=display">
-\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(2)}</script>……<script type="math/tex; mode=display">
-\theta_d := \theta_d-\eta\dfrac{\partial E}{\partial \theta_d}= \theta_d-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(d)}</script></li>
-<li>直接求导法<script type="math/tex; mode=display">
-令 X = 
-\begin{bmatrix}
-1 & x_{11}      & x_{12}      & \cdots & x_{1d}      \\\\
-1 & x_{21}      & x_{22}      & \cdots & x_{2d}      \\\\
-\vdots & \vdots & \vdots & \ddots & \vdots \\\\
-1 & x_{n1}      & x_{n2}      & \cdots & x_{nd}      \\\\
-\end{bmatrix},
-\theta =
-\begin{bmatrix}
-\theta_0  \\\\
-\theta_1 \\\\
-\vdots \\\\
-\theta_d \\\\
-\end{bmatrix}
-,则 y=X\theta</script>此时目标函数为：<script type="math/tex; mode=display">
-E(\theta)=(y-X\theta)^T(y-X\theta)</script>我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<script type="math/tex; mode=display">
-\theta^*=\arg\min_{\theta}E(\theta)</script>目标函数对$\theta$求导：<script type="math/tex; mode=display">
-\begin{aligned}
-\dfrac{\partial E(\theta)}{\partial\theta}
-&=\dfrac{\partial (y^T-\theta^TX^T)(y-X\theta)}{\partial\theta}\\\\
-&=\dfrac{\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)}{\partial\theta}\\\\
-&=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\\\\
-&=2X^T(X\theta-y)\\\\
-\dfrac{\partial E(\theta)}{\partial\theta}=0 \Rightarrow \theta^*=(X^TX)^{-1}X^Ty
-\end{aligned}</script></li>
+</blockquote>
+<h4 id="多元线性回归"><a href="#多元线性回归" class="headerlink" title="多元线性回归"></a>多元线性回归</h4>即输入变量$x$只有$d$个特征，只与一次相关。<br>对于其中某一个输入$x_i$，有$x_i=(x_i^{(1)},x_i^{(2)},\cdots,x_i^{(d)})$<br>$$<br>f_{\theta}(x^{(1)},x^{(2)},\cdots,x^{(d)})=\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)}<br>$$<br>$$<br>令\theta^T=[\theta_0,\theta_1,\theta_2,\cdots,\theta_d],x^T=[1,x^{(1)},x^{(2)},\cdots,x^{(d)}],则 f_{\theta}(x)=\theta^Tx<br>$$<br>以上的式子是仅仅针对一个输入$x$进行分析，此时有：<br>$$<br>\dfrac{\partial f_{\theta}(x)}{\partial\theta_j}=\dfrac{\partial (\theta_0+\theta_1x^{(1)}+\theta_2x^{(2)}+\cdots+\theta_dx^{(d)})}{\partial\theta_j}=x^{(j)}<br>$$</li>
+<li>梯度下降法<br>对$n$个输入使用梯度下降法求最优解的迭代公式为：<br>$$<br>\theta_0 := \theta_0-\eta\dfrac{\partial E}{\partial \theta_0}= \theta_0-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)<br>$$<br>$$<br>\theta_1 := \theta_1-\eta\dfrac{\partial E}{\partial \theta_1}= \theta_1-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(1)}<br>$$<br>$$<br>\theta_2 := \theta_2-\eta\dfrac{\partial E}{\partial \theta_2}= \theta_2-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(2)}<br>$$<br>……<br>$$<br>\theta_d := \theta_d-\eta\dfrac{\partial E}{\partial \theta_d}= \theta_d-\eta\sum_{i=1}^n(f_{\theta}(x_i)-y_i)x_i^{(d)}<br>$$</li>
+<li>直接求导法<br>$$<br>令 X =<br>\begin{bmatrix}<br>1 &amp; x_{11}      &amp; x_{12}      &amp; \cdots &amp; x_{1d}      \\<br>1 &amp; x_{21}      &amp; x_{22}      &amp; \cdots &amp; x_{2d}      \\<br>\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\<br>1 &amp; x_{n1}      &amp; x_{n2}      &amp; \cdots &amp; x_{nd}      \\<br>\end{bmatrix},<br>\theta =<br>\begin{bmatrix}<br>\theta_0  \\<br>\theta_1 \\<br>\vdots \\<br>\theta_d \\<br>\end{bmatrix}<br>,则 y=X\theta<br>$$<br>此时目标函数为：<br>$$<br>E(\theta)=(y-X\theta)^T(y-X\theta)<br>$$<br>我们现在需要求解的是使得目标函数最小的$\theta$向量，即：<br>$$<br>\theta^*=\arg\min_{\theta}E(\theta)<br>$$<br>目标函数对$\theta$求导：<br>$$<br>\begin{aligned}<br>\dfrac{\partial E(\theta)}{\partial\theta}<br>&amp;=\dfrac{\partial (y^T-\theta^TX^T)(y-X\theta)}{\partial\theta}\\<br>&amp;=\dfrac{\partial (y^Ty-y^TX\theta-\theta^TX^Ty+\theta^TX^TX\theta)}{\partial\theta}\\<br>&amp;=0-X^Ty-X^Ty+(X^TX+X^TX)\theta\\<br>&amp;=2X^T(X\theta-y)\\<br>\dfrac{\partial E(\theta)}{\partial\theta}=0 \Rightarrow \theta^*=(X^TX)^{-1}X^Ty<br>\end{aligned}<br>$$</li>
 </ol>
 <blockquote>
 <p> $\dfrac{\partial a^Tx}{\partial x}=\dfrac{\partial x^Ta}{\partial x}=a$<br>$\dfrac{\partial x^Tax}{\partial x}=(a+a^T)x$</p>
@@ -1460,9 +1407,24 @@ $(function () {
     
 
     
-    <script src="/libs/instantpage/instantpage.js" type="module"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </body>
 
 </html>

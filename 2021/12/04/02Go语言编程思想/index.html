@@ -4,19 +4,19 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="05函数式编程, 永不退场的闯关族">
-    <meta name="description" content="package main
+    <meta name="keywords" content="02Go语言编程思想, 永不退场的闯关族">
+    <meta name="description" content="文件结构：
 
-import (
-	&#34;bufio&#34;
-	&#34;fmt&#34;
-	&#34;io&#34;
-	&#34;strings&#34;
-)
+mockretriever代码：
+package mock
 
-func adder() func(int) int {
-	sum := 0
-	return func(v int) in">
+import &#34;fmt&#34;
+
+type Retriever struct {
+	Contents string
+}
+
+func (r *Retriever) Stri">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -28,7 +28,7 @@ func adder() func(int) int {
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>05函数式编程 | 永不退场的闯关族</title>
+    <title>02Go语言编程思想 | 永不退场的闯关族</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -322,12 +322,12 @@ func adder() func(int) int {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">05函数式编程</h1>
+                    <h1 class="description center-align post-title">02Go语言编程思想</h1>
                 </div>
             </div>
         </div>
@@ -451,10 +451,6 @@ func adder() func(int) int {
                                 <span class="chip bg-color">编程</span>
                             </a>
                         
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-                                <span class="chip bg-color">基础语法</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -463,8 +459,8 @@ func adder() func(int) int {
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
-                                慕课Go语言
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="post-category">
+                                慕课Go开发工程师
                             </a>
                         
                     </div>
@@ -476,7 +472,7 @@ func adder() func(int) int {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-12-05
+                    2021-12-04
                 </div>
                 
 
@@ -500,166 +496,189 @@ func adder() func(int) int {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-none"><code class="language-none">package main
+                <p>文件结构：</p>
+<p><img src="/../images/image-20211205115137823.png"></p>
+<p><code>mockretriever</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package mock
+
+import "fmt"
+
+type Retriever struct {
+	Contents string
+}
+
+func (r *Retriever) String() string {
+	return fmt.Sprintf("Retriever: {Contents=%s}", r.Contents)
+}
+
+type Poster interface {
+	Post(url string,
+		form map[string]string) string
+}
+
+func (r *Retriever) Post(url string,
+	form map[string]string) string {
+	r.Contents = form["contents"]
+	return "ok"
+}
+
+func (r *Retriever) Get(url string) string {
+	return r.Contents
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>retriever</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package real
 
 import (
-	"bufio"
-	"fmt"
-	"io"
-	"strings"
+	"net/http"
+	"net/http/httputil"
+	"time"
 )
 
-func adder() func(int) int {
-	sum := 0
-	return func(v int) int {
-		sum += v
-		return sum
-	}
+type Retriever struct {
+	UserAgent string
+	TimeOut   time.Duration
 }
 
-// 正统函数式编程写法
-type iAdder func(int) (int, iAdder)
-
-func adder2(base int) iAdder {
-	return func(v int) (int, iAdder) {
-		return base + v, adder2(base + v)
+func (r Retriever) Get(url string) string {
+	resp, err := http.Get(url)
+	if err != nil {
+		panic(err)
 	}
+
+	result, err := httputil.DumpResponse(resp, true)
+
+	resp.Body.Close()
+
+	if err != nil {
+		panic(err)
+	}
+
+	return string(result)
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>main.go</code>代码：</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go">package main
+
+import (
+	"fmt"
+	"time"
+
+	"imooc.com/interface/retriever/mock"
+
+	"imooc.com/interface/retriever/real"
+)
+
+type Retriever interface {
+	Get(url string) string
 }
 
-// 实例1：斐波那契数列
-func fibonacci1() func() int {
-	a, b := 0, 1
-	return func() int {
-		a, b = b, a+b
-		return a
-	}
+type Poster interface {
+	Post(url string,
+		form map[string]string) string
 }
 
-// 实例2：为函数实现接口
-type intGen func() int
+const url = "http://www,imooc.com"
 
-func (g intGen) Read(p []byte) (n int, e error) {
-	next := g()
-	if next &gt; 10000 {
-		return 0, io.EOF
-	}
-	s := fmt.Sprintf("%d\n", next)
-	// TODO: incorrect if p is too small!!!
-	return strings.NewReader(s).Read(p)
+func download(r Retriever) string {
+	return r.Get(url)
 }
 
-func fibonacci2() intGen {
-	a, b := 0, 1
-	return func() int {
-		a, b = b, a+b
-		return a
-	}
+func post(poster Poster) string {
+	return poster.Post(url,
+		map[string]string{
+			"name":   "ccmouse",
+			"course": "golang",
+		})
 }
 
-func printFileContents(reader io.Reader) {
-	scanner := bufio.NewScanner(reader)
+type RetrieverPoster interface {
+	Retriever
+	Poster
+}
 
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+func session(s RetrieverPoster) string {
+	s.Post(url, map[string]string{
+		"contents": "another fake imooc.com",
+	})
+	return s.Get(url)
+}
+
+func inspect(r Retriever) {
+	fmt.Println("Inspecting", r)
+	fmt.Printf("&gt; %T %v\n", r, r)
+	fmt.Println("&gt; Type switch")
+	switch v := r.(type) {
+	case *mock.Retriever:
+		fmt.Println(v.Contents)
+	case real.Retriever:
+		fmt.Println(v.UserAgent)
 	}
+	fmt.Println()
 }
 
 func main() {
-	a := adder()
-	for i := 0; i &lt; 10; i++ {
-		fmt.Println(a(i))
+	var r Retriever
+
+	r = &amp;mock.Retriever{"this is a fake imooc.com"}
+	fmt.Printf("%T %v\n", r, r)
+	inspect(r)
+
+	r = real.Retriever{
+		UserAgent: "Mozilla/5.0",
+		TimeOut:   time.Minute,
 	}
-	fmt.Println()
+	fmt.Printf("%T %v\n", r, r)
+	inspect(r)
 
-	b := adder2(0)
-	for i := 0; i &lt; 10; i++ {
-		var s int
-		s, b = b(i)
-		fmt.Println(s)
+	// Type assertion
+	if realRetriever, ok := r.(real.Retriever); ok {
+		fmt.Println(realRetriever.TimeOut)
+	} else {
+		fmt.Println("not a real retriever")
 	}
-	fmt.Println()
-
-	f1 := fibonacci1()
-	fmt.Println(f1()) // 1
-	fmt.Println(f1()) // 1
-	fmt.Println(f1()) // 2
-	fmt.Println(f1()) // 3
-	fmt.Println(f1()) // 5
-	fmt.Println(f1()) // 8
-	fmt.Println(f1()) // 13
-	fmt.Println(f1()) // 21
-	fmt.Println()
-
-	f2 := fibonacci2()
-	printFileContents(f2)
-}
-
-/*
-总结：
-	1. 函数是一等公民：参数、变量、返回值都可以是函数
-	2. 高阶函数
-	3. 函数 --&gt; 闭包
-	4. “正统”的函数式编程
-		4.1 不可变性：不能有状态，只有常量和函数
-		4.2 函数只能有一个参数
-	5. Go语言闭包的应用
-		5.1 更为自然，不需要修饰如何访问自由变量
-		5.2 没有Lambda表达式，但是有匿名函数
-*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	// fmt.Println(download(r))
+	retriever := mock.Retriever{"this is a fake imooc.com"}
+	fmt.Println("Try a session")
+	fmt.Println(session(&amp;retriever))
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>运行结果：</p>
-<pre class="line-numbers language-none"><code class="language-none">0
-1
-3
-6
-10
-15
-21
-28
-36
-45
+<pre class="line-numbers language-none"><code class="language-none">*mock.Retriever Retriever: {Contents=this is a fake imooc.com}
+Inspecting Retriever: {Contents=this is a fake imooc.com}
+&gt; *mock.Retriever Retriever: {Contents=this is a fake imooc.com}
+&gt; Type switch
+this is a fake imooc.com
 
-0
-1
-3
-6
-10
-15
-21
-28
-36
-45
+real.Retriever {Mozilla/5.0 1m0s}
+Inspecting {Mozilla/5.0 1m0s}
+&gt; real.Retriever {Mozilla/5.0 1m0s}
+&gt; Type switch
+Mozilla/5.0
 
-1
-1
-2
-3
-5
-8
-13
-21
+1m0s
+Try a session
+another fake imooc.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-1
-1
-2
-3
-5
-8
-13
-21
-34
-55
-89
-144
-233
-377
-610
-987
-1597
-2584
-4181
-6765<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>总结：</p>
+<ul>
+<li>  接口由使用者定义</li>
+<li>  接口变量自带指针</li>
+<li>  接口变量同样采用值传递，几乎不需要使用接口的指针</li>
+<li>  指针接收者实现只能以指针方式使用，值接收者都可</li>
+<li>查看接口变量<ul>
+<li>  表示任何类型：<code>interface{}</code></li>
+<li>  Type Assertion</li>
+<li>  Type Switch</li>
+</ul>
+</li>
+<li>duck typing<ul>
+<li>  “像鸭子走路，像鸭子叫（长得像鸭子），那么就是鸭子”</li>
+<li>  描述事物的外部行为而非内部结构</li>
+<li>  严格说Go语言属于结构化类型系统，类似duck typing</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -686,7 +705,7 @@ func main() {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">http://example.com/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</a>
+                    <a href="http://example.com/2021/12/04/02Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">http://example.com/2021/12/04/02Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -730,10 +749,6 @@ func main() {
                             
                                 <a href="/tags/%E7%BC%96%E7%A8%8B/">
                                     <span class="chip bg-color">编程</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
-                                    <span class="chip bg-color">基础语法</span>
                                 </a>
                             
                         </div>
@@ -904,7 +919,7 @@ func main() {
         repo: '',
         owner: '',
         admin: null,
-        id: '2021-12-05T12-30-00',
+        id: '2021-12-04T20-30-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -928,7 +943,7 @@ func main() {
 <script src="/libs/gitment/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Sun Dec 05 2021 12:30:00 GMT+0800',
+    id: 'Sat Dec 04 2021 20:30:00 GMT+0800',
     owner: '',
     repo: '',
     oauth: {
@@ -953,9 +968,9 @@ gitment.render('gitment-content');
 
 <script type="text/javascript">
     disqus_config = function () {
-        this.page.url = 'http://example.com/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/';
-        this.page.identifier = '/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/';
-        this.page.title = '05函数式编程';
+        this.page.url = 'http://example.com/2021/12/04/02Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/';
+        this.page.identifier = '/2021/12/04/02Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/';
+        this.page.title = '02Go语言编程思想';
     };
     let disqus_shortname = '';
 
@@ -1011,13 +1026,13 @@ gitment.render('gitment-content');
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2021/12/05/06%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E4%B8%8E%E5%87%BA%E9%94%99%E5%A4%84%E7%90%86/">
+                <a href="/2021/12/05/05%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="06资源管理与出错处理">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="05函数式编程">
                         
-                        <span class="card-title">06资源管理与出错处理</span>
+                        <span class="card-title">05函数式编程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1068,13 +1083,13 @@ gitment.render('gitment-content');
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/04/02Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A8%8B%E6%80%9D%E6%83%B3/">
+                <a href="/2021/12/04/04%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="02Go语言编程思想">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="04面对接口">
                         
-                        <span class="card-title">02Go语言编程思想</span>
+                        <span class="card-title">04面对接口</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1091,8 +1106,8 @@ gitment.render('gitment-content');
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E5%BC%80%E5%8F%91%E5%B7%A5%E7%A8%8B%E5%B8%88/" class="post-category">
-                                    慕课Go开发工程师
+                            <a href="/categories/%E6%85%95%E8%AF%BEGo%E8%AF%AD%E8%A8%80/" class="post-category">
+                                    慕课Go语言
                                 </a>
                             
                             
@@ -1108,6 +1123,10 @@ gitment.render('gitment-content');
                     
                     <a href="/tags/%E7%BC%96%E7%A8%8B/">
                         <span class="chip bg-color">编程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">基础语法</span>
                     </a>
                     
                 </div>

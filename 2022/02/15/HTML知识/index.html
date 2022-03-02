@@ -882,29 +882,29 @@ ftp://ftp.itany.com/note/HTML.md
 
 <h4 id="5-2-组成"><a href="#5-2-组成" class="headerlink" title="5.2 组成"></a>5.2 组成</h4><p>一个完整的URL由8个部分组成：</p>
 <ul>
-<li>==协议==protocol，如：<ul>
+<li><code>协议</code> protocol，如：<ul>
 <li>http：超文本传输协议，用来访问Web网站 Hyper Text Transfer Protocol</li>
 <li>https：加密的http协议</li>
 <li>ftp：文件传输协议，用来访问服务器上的文件，实现文件的上传和下载 File Transfer Protocol</li>
 <li>file：文件协议，用来访问本地文件</li>
 </ul>
 </li>
-<li>==主机名== hostname 服务器地址，如<code>www.baidu.com</code>、<code>ftp.itany.com</code></li>
-<li>==端口== port 位于主机名的后面，使用冒号隔开<ul>
+<li><code>主机名</code> hostname 服务器地址，如<code>www.baidu.com</code>、<code>ftp.itany.com</code></li>
+<li><code>端口</code> port 位于主机名的后面，使用冒号隔开<ul>
 <li>不同的协议使用不同的端口号，如http使用80，ftp使用21，https使用443</li>
 <li>如果使用的是默认端口，则端口号可以省略</li>
 <li>如果使用的不是默认端口，则必须指定端口</li>
 </ul>
 </li>
-<li>==路径== path 目标文件所在的路径文件，如<code>/web/html/imgs</code></li>
-<li>==资源== resource 要访问的目标文件，如<code>01.png</code></li>
-<li>==查询字符串== query string 也称为参数 <ul>
+<li><code>路径</code> path 目标文件所在的路径文件，如<code>/web/html/imgs</code></li>
+<li><code>资源</code> resource 要访问的目标文件，如<code>01.png</code></li>
+<li><code>查询字符串</code> query string 也称为参数 <ul>
 <li>在资源后面使用<code>?</code>开头的一组名称组</li>
 <li>名称和值之间以<code>=</code>隔开，多个之间以<code>&amp;</code>隔开，如<code>?a=1&amp;b=2&amp;c=3</code></li>
 </ul>
 </li>
-<li>==锚点== anchor 在资源后面使用<code>#</code>开头的文本，如<code>#first</code></li>
-<li>==身份认证== authentication 指定身份信息，如：<code>ftp://账号:密码@ftp.itany.com/note/HTML.md</code></li>
+<li><code>锚点</code> anchor 在资源后面使用<code>#</code>开头的文本，如<code>#first</code></li>
+<li><code>身份认证</code> authentication 指定身份信息，如：<code>ftp://账号:密码@ftp.itany.com/note/HTML.md</code></li>
 </ul>
 <h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><h3 id="1-简介-1"><a href="#1-简介-1" class="headerlink" title="1.简介"></a>1.简介</h3><p>表格是一个规则的行列结构，每个表格由若干行组成，每行由若干个单元格组成</p>
 <p>table、row、column</p>
@@ -983,7 +983,7 @@ ftp://ftp.itany.com/note/HTML.md
 </li>
 <li>enctype：提交数据的编码<ul>
 <li><code>application/x-www-form-urlencoded</code>，默认，可不写</li>
-<li><code>multipart/form-data</code>，==文件上传时使用==</li>
+<li><code>multipart/form-data</code>，文件上传时使用</li>
 </ul>
 </li>
 </ul>
@@ -1039,7 +1039,7 @@ ftp://ftp.itany.com/note/HTML.md
 <tr>
 <td>file</td>
 <td>文件选择器</td>
-<td>选择要上传的文件，==需要更改enctype属性==</td>
+<td>选择要上传的文件，需要更改<code>enctype</code>属性</td>
 </tr>
 <tr>
 <td>hidden</td>
@@ -1051,7 +1051,7 @@ ftp://ftp.itany.com/note/HTML.md
 
 <h4 id="3-1-单行文本框"><a href="#3-1-单行文本框" class="headerlink" title="3.1 单行文本框"></a>3.1 单行文本框</h4><p>常用属性：</p>
 <ul>
-<li>name：名称，==很重要==，如果没有指定name，则该表单元素的数据是无法提交的</li>
+<li>name：名称，<code>很重要</code>，如果没有指定name，则该表单元素的数据是无法提交的</li>
 <li>value：初始默认值</li>
 <li>size：指定宽度</li>
 <li>maxlength：最大字符数，默认没有限制</li>
@@ -1065,7 +1065,7 @@ ftp://ftp.itany.com/note/HTML.md
 </ol>
 <h4 id="3-2-单选按钮"><a href="#3-2-单选按钮" class="headerlink" title="3.2 单选按钮"></a>3.2 单选按钮</h4><p>常用属性：</p>
 <ul>
-<li>name：名称，==很重要==，必须指定name属性才能实现单选的互斥，否则可以同时选择</li>
+<li>name：名称，<code>很重要</code>，必须指定name属性才能实现单选的互斥，否则可以同时选择</li>
 <li>value：值</li>
 <li>checked：是否选中<ul>
 <li>设置<code>checked="checked"</code>来默认选中，可简写为<code>checked</code></li>
@@ -1156,7 +1156,7 @@ ftp://ftp.itany.com/note/HTML.md
 <li>for：必须将该属性值设置为与之关联表单元素的id属性相同</li>
 </ul>
 <blockquote>
-<p>几乎所有HTML标签都具有id属性，且==id值必须唯一==。</p>
+<p>几乎所有HTML标签都具有id属性，且<code>id值必须唯一</code>。</p>
 </blockquote>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>用户名：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
@@ -1362,7 +1362,7 @@ ftp://ftp.itany.com/note/HTML.md
 
 <blockquote>
 <p>将<code>input</code>的<code>list</code>属性和<code>datalist</code>的<code>id</code>属性设为相同。</p>
-<p>==<code>list</code>和普通下拉列表的区别：普通的下拉列表只能选择，<code>list</code>属性形成的下拉列表不仅能选择还能输入没有的选项进行提交。==</p>
+<p><code>list</code>和普通下拉列表的区别：普通的下拉列表只能选择，<code>list</code>属性形成的下拉列表不仅能选择还能输入没有的选项进行提交。</p>
 </blockquote>
 </li>
 <li><p>form：可以将表单元素写在form标签外面，然后通过该属性来关联指定的表单</p>

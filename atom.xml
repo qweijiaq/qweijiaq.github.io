@@ -3,11 +3,11 @@
   <title>CX330🌍</title>
   
   
-  <link href="https://www.fomal.cc/atom.xml" rel="self"/>
+  <link href="https://hexo.gopher.fit/atom.xml" rel="self"/>
   
-  <link href="https://www.fomal.cc/"/>
+  <link href="https://hexo.gopher.fit/"/>
   <updated>2023-04-20T14:00:00.000Z</updated>
-  <id>https://www.fomal.cc/</id>
+  <id>https://hexo.gopher.fit/</id>
   
   <author>
     <name>CX330🌍</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>JavaScript 概述</title>
-    <link href="https://www.fomal.cc/posts/40b1f11.html"/>
-    <id>https://www.fomal.cc/posts/40b1f11.html</id>
+    <link href="https://hexo.gopher.fit/posts/40b1f11.html"/>
+    <id>https://hexo.gopher.fit/posts/40b1f11.html</id>
     <published>2023-04-20T10:19:03.000Z</published>
     <updated>2023-04-20T14:00:00.000Z</updated>
     
@@ -30,12 +30,12 @@
     
     
     
-    <category term="《JavaScript高级程序设计》" scheme="https://www.fomal.cc/categories/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
+    <category term="《JavaScript高级程序设计》" scheme="https://hexo.gopher.fit/categories/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/"/>
     
     
-    <category term="Javascript" scheme="https://www.fomal.cc/tags/Javascript/"/>
+    <category term="Javascript" scheme="https://hexo.gopher.fit/tags/Javascript/"/>
     
-    <category term="读书笔记" scheme="https://www.fomal.cc/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    <category term="读书笔记" scheme="https://hexo.gopher.fit/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   

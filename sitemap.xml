@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.fomal.cc/site/time/index.html</loc>
+    <loc>https://hexo.gopher.fit/site/time/index.html</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/personal/bb/index.html</loc>
+    <loc>https://hexo.gopher.fit/personal/bb/index.html</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/box/nav/index.html</loc>
+    <loc>https://hexo.gopher.fit/box/nav/index.html</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/life/music/index.html</loc>
+    <loc>https://hexo.gopher.fit/life/music/index.html</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/personal/love/index.html</loc>
+    <loc>https://hexo.gopher.fit/personal/love/index.html</loc>
     
     <lastmod>2023-04-21</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/posts/40b1f11.html</loc>
+    <loc>https://hexo.gopher.fit/posts/40b1f11.html</loc>
     
     <lastmod>2023-04-20</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/social/link/index.html</loc>
+    <loc>https://hexo.gopher.fit/social/link/index.html</loc>
     
     <lastmod>2023-04-20</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/life/movies/index.html</loc>
+    <loc>https://hexo.gopher.fit/life/movies/index.html</loc>
     
     <lastmod>2023-04-20</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/categories/index.html</loc>
+    <loc>https://hexo.gopher.fit/categories/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/tags/index.html</loc>
+    <loc>https://hexo.gopher.fit/tags/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/box/animation/index.html</loc>
+    <loc>https://hexo.gopher.fit/box/animation/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/box/gallery/index.html</loc>
+    <loc>https://hexo.gopher.fit/box/gallery/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/life/games/index.html</loc>
+    <loc>https://hexo.gopher.fit/life/games/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -119,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/personal/about/index.html</loc>
+    <loc>https://hexo.gopher.fit/personal/about/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -128,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/site/census/index.html</loc>
+    <loc>https://hexo.gopher.fit/site/census/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/social/fcircle/index.html</loc>
+    <loc>https://hexo.gopher.fit/social/fcircle/index.html</loc>
     
     <lastmod>2023-03-22</lastmod>
     
@@ -146,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/site/echarts/index.html</loc>
+    <loc>https://hexo.gopher.fit/site/echarts/index.html</loc>
     
     <lastmod>2022-09-10</lastmod>
     
@@ -156,7 +156,7 @@
   
 
   <url>
-    <loc>https://www.fomal.cc/</loc>
+    <loc>https://hexo.gopher.fit/</loc>
     <lastmod>2023-04-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -164,14 +164,14 @@
 
   
   <url>
-    <loc>https://www.fomal.cc/tags/Javascript/</loc>
+    <loc>https://hexo.gopher.fit/tags/Javascript/</loc>
     <lastmod>2023-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.fomal.cc/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://hexo.gopher.fit/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -180,7 +180,7 @@
 
   
   <url>
-    <loc>https://www.fomal.cc/categories/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/</loc>
+    <loc>https://hexo.gopher.fit/categories/%E3%80%8AJavaScript%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E3%80%8B/</loc>
     <lastmod>2023-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

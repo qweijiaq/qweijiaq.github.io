@@ -3171,10 +3171,10 @@ if (localStorage.getItem("blogbg") != undefined) {
   setBg(localStorage.getItem("blogbg"));
 } else {
   document.getElementById("defineBg").innerText = `:root{
-    --default-bg: url(https://lskypro.acozycotage.net/CX330🌍/img/dm14.webp);
-    --darkmode-bg:url(https://lskypro.acozycotage.net/CX330🌍/img/yuanshen1.webp);
-    --mobileday-bg: url(https://lskypro.acozycotage.net/CX330🌍/img/snow.webp);
-    --mobilenight-bg: url(https://lskypro.acozycotage.net/CX330🌍/img/mb8.webp);
+    --default-bg: url(https://konachan.net/image/fa3f4c3211902c72fd347219abfa0d14/Konachan.com%20-%20356011%20airship%20animal%20bird%20building%20city%20clouds%20original%20scenic%20sky%20tree%20xingyue_ling.jpg);
+    --darkmode-bg:url(https://konachan.net/sample/08cc78f6a6c8b27ed951569e780c45ca/Konachan.com%20-%20343508%20sample.jpg);
+    --mobileday-bg: url(https://konachan.net/image/fa3f4c3211902c72fd347219abfa0d14/Konachan.com%20-%20356011%20airship%20animal%20bird%20building%20city%20clouds%20original%20scenic%20sky%20tree%20xingyue_ling.jpg);
+    --mobilenight-bg: url(https://konachan.net/sample/08cc78f6a6c8b27ed951569e780c45ca/Konachan.com%20-%20343508%20sample.jpg);
   }`;
 }
 // 切换背景主函数
